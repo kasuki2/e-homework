@@ -14,7 +14,7 @@ if(isset($_POST['fileNev']))
     $afile = $_POST['fileNev'];
 }
 
-
+// hi
 $directory = 'vocabgems';
 $scanned_directory = array_values(array_diff(scandir($directory), array('..', '.')));
 
