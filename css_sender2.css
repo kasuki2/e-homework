@@ -1,0 +1,66 @@
+.mondatTable
+{
+background-color: #ffffff;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.2;
+    padding-top: 0;
+    padding-bottom: 0;
+    font-family: Arial sans-serif;
+    color: #111111;
+    transition-delay: 0.2s;
+    -webkit-transition: all .3s linear 0s;
+    transition: all .3s linear 0s;
+}
+
+.mondTabPCorrected
+{
+    background-color: #ffffff;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: Arial sans-serif;
+    color: #111111;
+    padding-left: 36px;
+    padding-right: 36px;
+}
+.sorsz
+{
+    vertical-align: top;
+}
+
+#title
+{
+    font-weight: bold;
+    color: #6690ff;
+}
+#instru
+{
+    font-style: italic;
+}
+
+
+
+.butto
+{
+    margin-top: 12px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    color:#ffffff;
+    background-color: #00a100;
+    cursor: pointer;
+}
+.butto:hover
+{
+    background-color: #00cf00;
+}
+
+.filNevek
+{
+    padding: 4px;
+    margin: 4px;
+    cursor: pointer;
+}

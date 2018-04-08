@@ -1,0 +1,213 @@
+h4
+{
+    color: #28c11c;
+}
+
+.dobozKeret
+{
+    margin-left: 12px;
+    margin-right: 12px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    background-color: #d6dde3;
+
+}
+.dobozFejlec
+{
+text-align: right;
+    background-color: #acc7dc;
+    padding-top: 2px;
+    padding-bottom: 2px;
+
+}
+
+.dobozTartalom
+{
+    height: 0;
+    overflow-y: auto;
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    padding-top: 0;
+    padding-bottom: 0;
+    -webkit-transition: height .3s linear 0s;
+    transition: all .3s linear 0s;
+
+}
+
+.dobozTartalomOpen
+{
+    height: 140px;
+    overflow-y: auto;
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    -webkit-transition: height .3s linear 0s;
+    transition: all .3s linear 0s;
+}
+
+.helpSpan
+{
+    padding-left: 4px;
+    padding-right: 4px;
+    margin-left: 2px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #c0c0c0;
+    background-color: #baeeff;
+    color: #ff0000;
+    border-radius: 2px;
+    font-size: 8px;
+    cursor: pointer;
+}
+
+#helpContentDiv
+{
+    margin-left: 3%;
+    margin-right: 3%;
+    background-color: #ffffff;
+    padding-bottom: 16px;
+}
+
+#helpContentDiv p
+{
+    margin-left: 24px;
+    margin-right: 24px;
+}
+
+#helpContentDiv h4
+{
+    margin-left: 24px;
+    margin-right: 24px;
+}
+
+.tableGreen
+{
+    background-color: #e7ede4;
+    padding: 8px;
+    margin-left: 32px;
+    margin-right: 32px;
+    border-left-style: solid;
+    border-left-width: 3px;
+    border-left-color: #658c6a;
+}
+
+.tableBlue
+{
+    background-color: #d9f9ff;
+    padding: 8px;
+    margin-left: 32px;
+    margin-right: 32px;
+    border-left-style: solid;
+    border-left-width: 3px;
+    border-left-color: #3ca8ff;
+}
+
+.tableRed
+{
+    background-color: #e8daed;
+    padding: 8px;
+    margin-left: 32px;
+    margin-right: 32px;
+    border-left-style: solid;
+    border-left-width: 3px;
+    border-left-color: #b81c08;
+}
+
+.tableYellow
+{
+    background-color: #e4edc4;
+    padding: 8px;
+    margin-left: 32px;
+    margin-right: 32px;
+    border-left-style: solid;
+    border-left-width: 3px;
+    border-left-color: #e5cd09;
+}
+
+.tableGray
+{
+    background-color: #edebe9;
+    padding: 8px;
+    margin-left: 32px;
+    margin-right: 32px;
+    border-left-style: solid;
+    border-left-width: 3px;
+    border-left-color: #898e8c;
+}
+
+.tableBlue span
+{
+    color: #0000ff;
+}
+
+#helpContentDiv table span
+{
+    font-style: italic;
+    color: #24a91b;
+}
+
+#helpContentDiv hr
+{
+    margin-left: 36px;
+    margin-right: 36px;
+}
+.helpExampleNum
+{
+    vertical-align: top;
+
+}
+
+.helpHead
+{
+    background-color: #61856a;
+    color: #ffffff;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-size: 16px;
+    font-family: Verdana, sans-serif;
+}
+.helpHead h3
+{
+    margin-left: 24px;
+    margin-right: 24px;
+}
+
+.arrow {
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+
+    border-left: 7px solid #55cc43;
+    display: inline-block;
+    margin-right: 3px;
+}
+
+.redcol
+{
+    color: #e21e08;
+    font-weight: bold;
+}
+
+.headTitle
+{
+    color: #24a91b;
+    font-weight: bold;
+    margin-left: 24px;
+    margin-right: 24px;
+    padding-top: 12px;
+    padding-bottom: 8px;
+}
+
+.helpButt
+{
+    margin-left: 24px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    margin-right: -8px;
+}

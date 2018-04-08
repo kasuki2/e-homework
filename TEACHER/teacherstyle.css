@@ -1,0 +1,48 @@
+.naviButt
+{
+    background-color: #00a100;
+    color: #ffffff;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.dirFrame
+{
+    background-color: #d5c3d1;
+    padding: 4px;
+}
+.dirHead
+{
+    background-color: #25719e;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    padding: 2px;
+    cursor: pointer;
+}
+.fileSor
+{
+    background-color: #efefef;
+    color:#111111;
+    padding-left: 12px;
+    cursor: pointer;
+}
+
+.dirFrame2
+{
+    background-color: #a0cfd5;
+    padding: 4px;
+}
+
+.dirHead2
+{
+    background-color: #9e2b57;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    padding: 2px;
+    cursor: pointer;
+}

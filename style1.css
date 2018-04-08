@@ -1,0 +1,1030 @@
+
+#wrapper1
+{
+    width: 90%;
+    height: 100%;
+    background-color: #efefef;
+    margin-right: auto;
+    margin-left: auto;
+    display: none;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+}
+
+#wrapper_login
+{
+    width: 90%;
+    height: 1200px;
+    background-color: #efefef;
+    margin-right: auto;
+    margin-left: auto;
+
+
+}
+
+#loginKeret
+{
+    width: 400px;
+    height: 350px;
+
+    background-color: rgb(221, 219, 224);
+    padding: 24px;
+    border-style: solid;
+    border-width: 4px;
+    border-color: #ffffff;
+   margin-top: 24px;
+    display: inline-block;
+}
+
+.leftText
+{
+
+}
+
+
+.levelsquare
+{
+    width: 8px;
+    height: 8px;
+    margin-left: 2px;
+    display: inline-block;
+
+}
+#menuFrame
+{
+    width: 80%;
+    height: 40px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: #536eca;
+    padding-right: 12px;
+    padding-top: 4px;
+
+
+}
+.sendButt
+{
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 24px;
+    padding-right: 24px;
+    background-color: #444444;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.closeButt
+{
+    background-color: #ff0000;
+    color:#ffffff;
+    text-align: center;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+}
+.Button2
+{
+    border-style: none;
+    display: inline-block;
+    padding-left: 36px;
+    padding-right: 36px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin: 4px;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+.kisButton
+{
+    border-style: none;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    cursor: pointer;
+    color: #1f42a1;
+    background-color: transparent;
+}
+
+.loginButt
+{
+    border-style: none;
+    padding-left: 36px;
+    padding-right: 36px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    cursor: pointer;
+    color: #22307c;
+    background-color: #fdfffc;
+}
+
+#accDataTable
+{
+    padding-left: 36px;
+    padding-right: 36px;
+    background-color: #ffffff;
+    width: 100%;
+}
+
+#accDataTable td
+{
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.menuButt
+{
+    margin-left: 4px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+
+    color: #eeeeee;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    text-align: right;
+    z-index: 12;
+    font-family: Aldrich, Tahoma, Arial, serif;
+    font-weight: bold;
+
+}
+.menuButt:hover
+{
+    color: #ffffff;
+}
+.jelzoSzam
+{
+
+    background-color: #ff0000;
+    color: #ffffff;
+    text-align: center;
+    padding: 2px;
+    padding-left: 4px;
+    padding-right: 4px;
+    border-radius: 6px;
+    margin-left: 4px;
+
+    /* Position the tooltip text */
+    /* position: absolute;
+     z-index: -1;
+     top: -10%;
+     right: 10%; */
+
+
+}
+
+
+
+
+.answerWord
+{
+    padding-left: 4px;
+    padding-right: 4px;
+    color: #0000ff;
+}
+.dashBoartTable
+{
+    width: 100%;
+    background-color: #175F55;
+}
+.dashBoartTable td
+{
+    padding: 4px;
+}
+.dashBoardButt1
+{
+    margin-right: 8px;
+    color: #ffe73a;
+    font-family: Arial, serif;
+    font-weight: bold;
+    cursor: pointer;
+}
+.dashBoardButt2
+{
+    margin-right: 8px;
+    color: #ffe73a;
+    font-family: Arial, serif;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.dashBoNumber
+{
+    color: #ffe73a;
+    font-family: Arial, serif;
+    font-weight: bold;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+
+}
+
+.tooltip2 {
+    position: relative;
+    display: inline-block;
+}
+
+.sorexp
+{
+    position: relative;
+    height: 6px;
+
+}
+
+.sorexp .vonalasExp
+{
+    visibility: hidden;
+    background-color: #666666;
+    color: #ffffff;
+    text-align: left;
+    padding: 16px;
+    overflow-wrap: normal;
+    white-space: normal;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-weight: normal;
+    border-style:  solid;
+    border-width: 1px;
+    border-color: #000000;
+    /* Position the tooltip text */
+    position: absolute;
+    bottom: 115%;
+    left: 10%;
+    z-index: 1;
+
+}
+
+.sorexp2
+{
+    position: relative;
+    height: 6px;
+    width: 100%;
+}
+
+.sorexp2 .contextMenu
+{
+    visibility: hidden;
+    background-color: #666666;
+    color: #ffffff;
+    text-align: left;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    overflow-wrap: normal;
+    white-space: normal;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-weight: normal;
+
+    /* Position the tooltip text */
+    position: absolute;
+    bottom: 115%;
+    left: 10%;
+    z-index: 1;
+}
+
+.menupoint
+{
+    white-space: nowrap;
+    cursor: pointer;
+}
+.menupoint:hover
+{
+    color: #ffe31b;
+}
+
+
+.tooltip2 .tooltiptext2
+{
+    visibility: hidden;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 8px;
+    border-radius: 6px;
+    overflow-wrap: normal;
+    white-space: pre;
+
+    /* Position the tooltip text */
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 10%;
+}
+
+.tooltip2 .tooltipVocab
+{
+    visibility: hidden;
+    background-color: #666666;
+    color: #ffffff;
+    text-align: left;
+    padding: 16px;
+    overflow-wrap: normal;
+    white-space: normal;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-weight: normal;
+    border-style:  solid;
+    border-width: 1px;
+    border-color: #000000;
+    /* Position the tooltip text */
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 10%;
+}
+
+.tooltip2 .checkeTipText
+{
+    visibility: hidden;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 8px;
+    border-radius: 6px;
+
+
+
+    /* Position the tooltip text */
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 10%;
+    display: block;
+
+    min-width: 320px;
+    text-wrap: normal;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+    visibility: hidden;
+
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+
+    /* Position the tooltip text */
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+
+    /* Fade in tooltip */
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+
+/* Tooltip arrow */
+.tooltip2 .tooltiptext2::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+     visibility: visible;
+     opacity: 1;
+ }
+
+.word
+{
+    color: #ffffff;
+    padding: 4px;
+    cursor: pointer;
+}
+.word:hover
+{
+    color: #ffe31b;
+}
+
+.taskPoint
+{
+    padding-top: 4px;
+    padding-bottom: 4px;
+    margin-top: 4px;
+    margin-left: 36px;
+    margin-right: 36px;
+    cursor: pointer;
+}
+
+.kisCim
+{
+    color: #6ba868;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+
+}
+.kisCimSor
+{
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #a1a1a1;
+    margin-left: 36px;
+    margin-right: 36px;
+
+
+}
+.vonalasCorr
+{
+  padding-left: 8px;
+  padding-right: 8px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: #0000ff;
+}
+
+.resultInfo
+{
+    font-weight: bold;
+    color: #00c100;
+}
+.resultInfoIncorr
+{
+    font-weight: bold;
+    color: #fb3b3b;
+}
+.techerMessage
+{
+    font-style: italic;
+    color: #fc420f;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.words
+{
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    color:#ffffff;
+    background-color: #6688ff;
+    cursor: pointer;
+    margin-right: 8px;
+    margin-top: 8px;
+    margin-bottom: 0px;
+    display: inline-block;
+    font-weight: bold;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    border-bottom-width: 2px;
+}
+.beirtWord
+{
+    color: #1a6cfb;
+    font-weight: bold;
+}
+
+.remi
+{
+    background-color: #dedede;
+    text-align: center;
+    cursor: pointer;
+    font-style: italic;
+    color: #bb0000;
+    padding-left: 2px;
+    padding-right: 2px;
+    border-radius: 4px;
+}
+
+.wordBackGr
+{
+    background-color: #ffffff;
+    padding-top: 0;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-bottom: 12px;
+    overflow-wrap: normal;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #d5d5d5;
+
+}
+
+.taskTable
+{
+    width: 100%;
+    background-color: #ffffff;
+    padding-left: 5%;
+    padding-right: 5%;
+
+}
+
+.headFrame
+{
+    background-color: #ffffff;
+    padding-right: 36px;
+    padding-left: 36px;
+    padding-top: 12px;
+    padding-bottom: 4px;
+}
+
+.arci
+{
+    -webkit-animation-name: einsteinArc; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 1s; /* Safari 4.0 - 8.0 */
+    animation-name: einsteinArc;
+    animation-duration: 1s;
+    animation-direction: reverse;
+    animation-iteration-count: 2;
+    animation-delay: 2s;
+}
+@-webkit-keyframes einsteinArc {
+    0%   {top:0;}
+    50% {top:5px;}
+    100% {top:0}
+}
+@keyframes einsteinArc {
+    0%   {top:0;}
+    50% {top:5px;}
+    100% {top:0}
+}
+
+.taskInstFrame
+{
+    margin-top: 32px;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    position: relative;
+    background-color: #ffffff;
+
+    -webkit-animation-name: upPara; /* Safari 4.0 - 8.0 */
+     -webkit-animation-duration: 0.6s; /* Safari 4.0 - 8.0 */
+     animation-name: upPara;
+    animation-duration: 0.6s;
+
+
+}
+
+@-webkit-keyframes upPara {
+    0%   {top:16px;}
+    100% {top:0;}
+}
+@keyframes upPara {
+    0%   {top:16px;}
+    100% {top:0;}
+}
+
+
+.parallaxOuterDiv {
+    position: relative;
+    background-color: #ffffff;
+    padding-bottom: 36px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.parallaxDiv{
+    position: relative;
+    -webkit-animation-name: para; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 0.6s; /* Safari 4.0 - 8.0 */
+    animation-name: para;
+    animation-duration: 0.6s;
+
+}
+
+@-webkit-keyframes para {
+    0%   {top:16px;}
+    100% {top:0;}
+}
+@keyframes para {
+    0%   {top:16px;}
+    100% {top:0;}
+}
+
+
+.kisParal
+{
+    position: relative;
+    -webkit-animation-name: kisPara; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 0.6s; /* Safari 4.0 - 8.0 */
+    animation-name: kisPara;
+    animation-duration: 0.6s;
+
+    text-align: center;
+    width: 100%;
+}
+
+
+
+@-webkit-keyframes kisPara {
+    0%   {top:10px;}
+    100% {top:0;}
+}
+@keyframes kisPara {
+    0%   {top:10px;}
+    100% {top:0;}
+}
+
+
+
+.tabTitle
+{
+    font-weight: bold;
+    color: #6690ff;
+}
+.tabInstru
+{
+    font-style: italic;
+    padding-bottom: 4px;
+}
+
+
+
+.helpBelso
+{
+    width: 90%;
+    background-color: #ffffff;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+#theRemark
+{
+    margin-left: 36px;
+    margin-right: 36px;
+    margin-top: 4px;
+    color:#444444;
+}
+
+.closeX
+{
+    background-color: #ff0000;
+    color:#ffffff;
+    font-weight: bold;
+   padding: 2px;
+    height: 16px;
+    width:16px;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 16px;
+}
+
+#workTop1Frame
+{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #efefef;
+    vertical-align: top;
+    padding: 12px;
+    overflow: scroll;
+}
+
+.taskContentNormal
+{
+    width: 100%;
+    height: auto;
+    background-color: #efefef;
+    vertical-align: top;
+
+    -webkit-transition: all .3s linear 0s;
+    transition: all .3s linear 0s;
+}
+
+.taskcontentLeft
+{
+    width: 50%;
+    height: auto;
+    background-color: #efefef;
+    vertical-align: top;
+
+    -webkit-transition: all .3s linear 0s;
+    transition: all .3s linear 0s;
+}
+
+.helpContentNormal
+{
+    width: 0;
+    height: 600px;
+    vertical-align: top;
+    overflow-y: scroll;
+    -webkit-transition: all .3s linear 0s;
+    transition: all .3s linear 0s;
+
+}
+.helpContentLeft
+{
+    width: 49%;
+    height: 600px;
+    vertical-align: top;
+    overflow-y: scroll;
+    -webkit-transition: all .3s linear 0s;
+    transition: all .3s linear 0s;
+
+}
+
+.coverMCgram
+{
+    max-width: 700px;
+    background-color: #efefef;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+.exampDiv
+{
+    margin-left: 36px;
+    margin-right: 36px;
+    background-color: #e4ffcf;
+    padding: 4px;
+}
+
+.exampGreen
+{
+    color: #49704b;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+}
+
+.buttPlus
+{
+
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    cursor: pointer;
+    margin-left: 4px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #444444;
+    border-radius: 2px;
+}
+.nextTask
+{
+    color: #49704b;
+    font-size: 30px;
+    cursor: pointer;
+    margin-left: 4px;
+}
+
+.subCov
+{
+    width: 100%;
+    height: 0;
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    vertical-align: middle;
+    background-color: rgba(120, 193, 126, 0.48);
+    -webkit-transition: height .3s linear 0s;
+    transition: height .3s linear 0s;
+    z-index: 100;
+}
+
+.subCovBele
+{
+    width: 50%;
+    height: 0;
+    overflow: hidden;
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    text-align: center;
+    color: #49704b;
+    font-size: 40px;
+    font-family: Verdana, sans-serif;
+    -webkit-transition: height .3s linear 0s;
+    transition: height .3s linear 0s;
+}
+
+.keretDiv
+{
+    max-width: 700px;
+    background-color: #efefef;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+#workTop1
+{
+max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+
+.taskDiv1
+{
+    display: inline-block;
+    max-width: 700px;
+    margin-left: 0;
+
+    -webkit-transition: all .3s linear 0s;
+    transition: all .3s linear 0s;
+}
+
+.taskDiv1Left
+{
+    display: inline-block;
+    width: 700px;
+    margin-left: 12px;
+
+    -webkit-transition: all .3s linear 0s;
+    transition: all .3s linear 0s;
+
+}
+.taskDiv2
+{
+    display: inline-block;
+    width: auto;
+    float: left;
+    vertical-align: top;
+    background-color: #00ba00;
+    margin-left: 16px;
+    text-align: center;
+    overflow: hidden;
+    opacity: 1;
+    -webkit-transition: all .3s linear 0s;
+    transition: all .3s linear 0s;
+
+}
+.taskDiv2Left
+{
+    display: inline-block;
+    max-width: 45%;
+    vertical-align: top;
+    background-color: #00ba00;
+    margin-left: 16px;
+    text-align: center;
+    overflow: hidden;
+    opacity: 1;
+
+    -webkit-transition: all .3s linear 0s;
+    transition: all .3s linear 0s;
+    transition-delay: 0.3s;
+}
+
+.beadomButt
+{
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 24px;
+    padding-right: 24px;
+    font-family: Verdana, sans-serif;
+    font-size: 12px;
+    border-radius: 30px;
+    background-color: #175F55;
+    color: #fff148;
+    cursor: pointer;
+    overflow: hidden;
+
+
+
+}
+
+#beadGomb
+{
+
+    animation-iteration-count: 1;
+    animation-timing-function: ease-out;
+    position: relative;
+    color:#ffffff;
+
+
+}
+
+@keyframes felhuz {
+    0%   {top:0;
+        transform: rotate(0deg);}
+    100% {top:-40px;
+        transform: rotate(30deg);
+    }
+}
+
+@-webkit-keyframes felhuz
+{
+    0%   {top:0;}
+    100% {top:-30px;}
+}
+
+@keyframes letol {
+    0%   {top:40px;
+        transform: rotate(30deg);
+    }
+    100% {top:0;
+        transform: rotate(0deg);
+    }
+
+}
+
+@-webkit-keyframes letol
+{
+    0%   {top:30px;}
+    100% {top:0;}
+}
+
+.askMore
+{
+    margin-left: 4px;
+    padding: 2px;
+    margin-bottom: 3px;
+    background-color: #efefef;
+    cursor: pointer;
+}
+
+@keyframes loader {
+    0%   {left:0;}
+    100% {left:100%;}
+
+}
+
+@-webkit-keyframes loader
+{
+  0%   {left:0;}
+  100% {left:100%;}
+
+}
+.loaderAnim
+{
+
+    position:absolute;
+    width:4px;
+    height:4px;
+    border-radius: 2px;
+    background-color:#05cbe6;
+    left:0;
+    top:0;
+    animation-name: loader;
+    animation-duration: 1.3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.1);
+
+
+}
+.loaderAnim2
+ {
+     position:absolute;
+     width:4px;
+     height:4px;
+    border-radius: 2px;
+     background-color:#05cbe6;
+     left:0;
+     top:0;
+     animation-name: loader;
+     animation-duration: 1.3s;
+     animation-iteration-count: infinite;
+     animation-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.1);
+     animation-delay: 0.3s;
+ }
+.loaderAnim3
+{
+    position:absolute;
+    width:4px;
+    height:4px;
+    border-radius: 2px;
+    background-color:#05cbe6;
+    left:0;
+    top:0;
+    animation-name: loader;
+    animation-duration: 1.3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.1);
+    animation-delay: 0.6s;
+}
+#loaderDiv
+{
+    max-width:400px;
+    margin-left:auto;
+    margin-right:auto;
+    position:relative;
+    height:4px;
+    visibility: hidden;
+}
+
+.leftArrow { width: 0; height: 0; border-top: 10px solid transparent; border-right: 20px solid #7f7f82; border-bottom: 10px solid transparent;
+cursor: pointer;
+}
+.rightArrow { width: 0; height: 0; border-top: 10px solid transparent; border-left: 20px solid #7f7f82; border-bottom: 10px solid transparent;margin-left: 12px;
+cursor: pointer;
+}
