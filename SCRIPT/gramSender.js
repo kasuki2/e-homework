@@ -4202,13 +4202,13 @@ var procVonalasCorrected = function (muster, userTippek, teacherRemakrs)
       for(var s = 0;s<Contents[i].sentence.length;s++)
       {
           var corCol = "style='color:#00bb00;font-weight:bold;font-size:20px;font-family: " + '"' + 'Nanum Pen Script' + "'" + '"';
-          if(tanarJav[z] != "OK")
+          if(tanarJav[z] !== "OK")
           {
               corCol = "style='color:#ff0000;font-weight:bold;font-size:20px;font-family: " + '"' + 'Nanum Pen Script' + "'" + '"';
           }
 
           var beir = "";
-          if(userTipArr[z] == "GGG")
+          if(userTipArr[z] === "GGG")
           {
               beir = "<i>" + globLang.noanswer + "</i>";
               if(s < Contents[i].sentence.length-1)

@@ -14,7 +14,7 @@ h4
 }
 .dobozFejlec
 {
-text-align: right;
+    text-align: right;
     background-color: #acc7dc;
     padding-top: 2px;
     padding-bottom: 2px;
@@ -85,6 +85,28 @@ text-align: right;
     margin-right: 24px;
 }
 
+#helpContentDiv button
+{
+    background-color: #c91e08;
+    color:#ffffff;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #7a8482;
+
+    padding-left: 20px;
+    padding-right: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-radius: 4px;
+    cursor:pointer;
+}
+
+#helpContentDiv img
+{
+    vertical-align: middle;
+    margin-left: 4px;
+}
+
 .tableGreen
 {
     background-color: #e7ede4;
@@ -149,6 +171,11 @@ text-align: right;
 {
     font-style: italic;
     color: #24a91b;
+}
+
+#helpContentDiv table td
+{
+    vertical-align: top;
 }
 
 #helpContentDiv hr
