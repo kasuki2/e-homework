@@ -31,7 +31,7 @@ if($code == "0") {
 
     for ($i = 0; $i < count($userArr); $i++) {
         assignTheHomeWork($userArr[$i]->myFolder, $feladatNeve, "no");
-
+       
         // if user does not want a mail, or got one today,
         // then sendMail() returns "0';
         // otherwise it returns the e-mail address itself,
@@ -208,6 +208,8 @@ function assignTheHomeWork($userFolder, $feladatNeve, $redone)
     $cimTip = getTitle($cimPath);
     $acim = $cimTip[0];
 
+  //  entryHw($userFolder, $feladatNeve, $acim); // log hw
+
     if ($fileArray == null) {
         $ujArr = array();
 
@@ -285,6 +287,107 @@ function getTitle($feladatPath)
     $taskArr = json_decode($taskFile);
     return array($taskArr->title, $taskArr->type);
 }
+
+class Hwhistory
+{
+    public $user;
+    public $cont;
+}
+
+class Content
+{
+    public $title;
+    public $path;
+    public $date;
+}
+
+function entryHw($userMapp, $hwPath, $hwTitle)
+{
+
+    $apth = "assignedhw.json";
+
+    $afile = file_get_contents($apth);
+    $fileArray = json_decode($afile);
+    $date = new DateTime();
+    $date1 = $date->format('Y-m-d H:i:s');
+
+    if($fileArray != null)
+    {
+      // find user
+        $userFound = false;
+        for($i=0;$i<count($fileArray);$i++)
+        {
+            if($fileArray[$i]->user == $userMapp)
+            {
+                $userFound = true;
+                $ujCont = new Content();
+                $ujCont->title = $hwTitle;
+                $ujCont->path = $hwPath;
+                $ujCont->date = $date1;
+
+                if($fileArray[$i]->cont != null)
+                {
+                    array_push($fileArray[$i]->cont, $ujCont);
+                }
+
+            }
+        }
+
+        if(!$userFound) // no such user
+        {
+            $ujCont = new Content();
+            $ujCont->title = $hwTitle;
+            $ujCont->path = $hwPath;
+            $ujCont->date = $date1;
+
+            $contArr = array();
+            array_push($contArr, $ujCont);
+
+
+            $ujUser = new Hwhistory();
+            $ujUser->user = $userMapp;
+            $ujUser->cont = $contArr;
+
+            array_push($fileArray, $ujUser);
+
+            echo " another user logged ";
+        }
+        else
+        {
+            echo " new entry logged ";
+        }
+
+        // save
+        $toment = json_encode($fileArray);
+        file_put_contents($apth, $toment);
+
+    }
+    else
+    {
+        $ujCont = new Content();
+        $ujCont->title = $hwTitle;
+        $ujCont->path = $hwPath;
+        $ujCont->date = $date1;
+
+        $ujUser = new Hwhistory();
+        $ujUser->user = $userMapp;
+
+        $contArr = array();
+        array_push($contArr, $ujCont);
+        $ujUser->cont = $contArr;
+
+        $framArr = array();
+        array_push($framArr, $ujUser);
+        echo " file started ";
+
+        // save
+        $toment = json_encode($framArr);
+        file_put_contents($apth, $toment);
+
+    }
+
+}
+
 
 
  ?>
