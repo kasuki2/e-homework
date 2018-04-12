@@ -349,11 +349,13 @@ else
                 procGram6();
                 return;
             }
+
             var userTippek = GLOBALUSERTIPS.split('_');
           //  alert(userTippek.length);
             var mind = "";
             var correctSolus = [];
             var veg = "";
+            var coArr = [];
             for(var i = 0;i<hossz;i++)
             {
                 soluArr = globTaskFile.contents[i].solutions;
@@ -378,7 +380,19 @@ else
 
 
                     correctSolus.push(alternats);
-
+                    /*
+                    var egyMondat = globTaskFile.contents[i].sentence;
+                    var belem = "";
+                    var vonal = " ________ ";
+                    for(var s = 0;s<egyMondat.length;s++)
+                    {
+                        if(s === egyMondat.length-1)
+                        {
+                            vonal = "";
+                        }
+                        belem += egyMondat[s] + vonal;
+                    }
+                    */
               }
 
             }
@@ -416,15 +430,69 @@ else
                 szin = "style='background-color:#ff8888'";
                 ok = "NO";
               }
+
+
+
               mus = mus + "<tr " + szin + " ><td>" + correctSolus[c] + "</td><td>" + userTippek[c] + "</td><td class='azOK' onclick='changeOk(this)' >" + ok + "</td><td><input class='Trem' type='text' value='-'></tr></tr>";
+              coArr.push("<span>(" + correctSolus[c] + ") </span><span " + szin +" >" + userTippek[c] + "</span><span class='azOK' onclick='changeOk2(this)' >" + ok + "</span><span><input class='Trem' type='text' value='-'></span>");
             }
-          //  alert(mus);
+
+
+            var egyMondat = globTaskFile.contents;
+
+
+            var asor = "";
+            var z = 0;
+            for(var s = 0;s<egyMondat.length;s++)
+            {
+                var belem = "";
+                var cori = "";
+                var vonal = " ________ ";
+               var egySor = egyMondat[s].sentence;
+               for(var k=0;k<egySor.length;k++)
+               {
+                   if(k === egySor.length -1)
+                   {
+                       vonal = "";
+                   }
+                   else
+                   {
+                       cori += coArr[z];
+                       z++;
+                   }
+                   belem += egySor[k] + vonal;
+
+
+               }
+
+               asor += "<tr><td>" + belem + "</td></tr>";
+               asor += "<tr><td>" + cori + "</td></tr>";
+
+            }
+
+
             //  alert("<table>" + mind + "</table>");
-            var gombSor = "<tr><td colspan=2 onclick='sendCorr();' >SEND CORRECTED</td></tr>";
+            var gombSor = "<span style='padding: 4px;cursor: pointer;background-color: #1a6cfb;color:white' onclick='sendCorr();' >SEND CORRECTED</span>";
             var headSor = "<tr><td>CORRECT SOL.</td><td colspan=2 >USER TIPS</td><td>Teacher Remarks</td></tr>";
-           document.getElementById('vonalasResult').innerHTML = "<table>" + headSor + mus + gombSor + "</table>";
+          // document.getElementById('vonalasResult').innerHTML = "<table>" + headSor + mus + gombSor + "</table>" + "<br>" + "<table>" + asor + "</table>" + gombSor;
+            document.getElementById('vonalasResult').innerHTML = "<table>" + asor + "</table>" + gombSor;
         }
 
+
+        function changeOk2(elem)
+        {
+            if(elem.innerHTML == "OK")
+            {
+                elem.innerHTML = "NO";
+                elem.previousSibling.style.backgroundColor = "#ff7978";
+            }
+            else
+            {
+                elem.innerHTML = "OK";
+                elem.previousSibling.style.backgroundColor = "#89ffa3";
+            }
+
+        }
 
         function procABCgram()
         {
@@ -786,7 +854,7 @@ else
         {
           // megosor
           var okek = document.getElementsByClassName('azOK');
-
+            alert(okek.length);
           var megoSor = "";
           for(var i = 0;i<okek.length;i++)
           {
