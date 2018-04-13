@@ -85,60 +85,73 @@ require_once "checklogin.php";
 
           var bele = "";
             bele += "<tr style='background-color: #9a2392;color:#ffd5f4' ><td></td><td>" + "ASSIGNED" + "</td><td></td><td>" + "</td><td>" +  "</td><td></td></tr>";
-          if(assigned.length > 0)
+          if(assigned != null)
           {
-              assigned.reverse();
-              for(var i = 0;i<assigned.length;i++)
+              if(assigned.length > 0)
               {
-                  bele += "<tr><td><td>" + parseInt(i+1) +  ".</td><td>" + assigned[i].atitle + "</td><td>" + assigned[i].date1 + "</td><td>" + assigned[i].tipus + "</td><td>redo: " + assigned[i].redo + "</td></tr>";
-              }
+                  assigned.reverse();
+                  for(var i = 0;i<assigned.length;i++)
+                  {
+                      bele += "<tr><td><td>" + parseInt(i+1) +  ".</td><td>" + assigned[i].atitle + "</td><td>" + assigned[i].date1 + "</td><td>" + assigned[i].tipus + "</td><td>redo: " + assigned[i].redo + "</td></tr>";
+                  }
 
+              }
+              else
+              {
+                  bele += "<tr style='background-color: #fbe3f2;color:#000000' ><td></td><td>" + "no assigned hw" + "</td><td></td><td>" + "</td><td>" +  "</td><td></td></tr>";
+              }
           }
-          else
-          {
-              bele += "<tr style='background-color: #fbe3f2;color:#000000' ><td></td><td>" + "no assigned hw" + "</td><td></td><td>" + "</td><td>" +  "</td><td></td></tr>";
-          }
+
+
 
             bele += "<tr style='background-color: #fb530d;color:#fcffc2' ><td></td><td>" + "SUBMITTED" + "</td><td></td><td>" + "</td><td>" +  "</td><td></td></tr>";
 
-            if(submitted.length > 0)
-            {
-                submitted.reverse();
-                for(var i = 0;i<submitted.length;i++)
-                {
-                    bele += "<tr><td><td>" + parseInt(i+1) +  ".</td><td>" + submitted[i].atitle + "</td><td>" + submitted[i].date1 + "</td><td>" + submitted[i].tipus + "</td><td>redo: " + submitted[i].redo + "</td></tr>";
-                }
+          if(submitted != null)
+          {
+              if(submitted.length > 0)
+              {
+                  submitted.reverse();
+                  for(var i = 0;i<submitted.length;i++)
+                  {
+                      bele += "<tr><td><td>" + parseInt(i+1) +  ".</td><td>" + submitted[i].atitle + "</td><td>" + submitted[i].date1 + "</td><td>" + submitted[i].tipus + "</td><td>redo: " + submitted[i].redo + "</td></tr>";
+                  }
 
-            }
-            else
-            {
-                bele += "<tr style='background-color: #ffd5f4;color:#000000' ><td></td><td>" + "no submitted" + "</td><td></td><td>" + "</td><td>" +  "</td><td></td></tr>";
-            }
+              }
+              else
+              {
+                  bele += "<tr style='background-color: #ffd5f4;color:#000000' ><td></td><td>" + "no submitted" + "</td><td></td><td>" + "</td><td>" +  "</td><td></td></tr>";
+              }
+          }
+
+
 
 
             bele += "<tr style='background-color: #169a1e;color:#c8ffd1' ><td></td><td>" + "CORRECTED" + "</td><td></td><td>" + "</td><td>" +  "</td><td></td></tr>";
 
-
-            if(corrected.length > 0)
+            if(corrected != null)
             {
-                if(corrected.length > 12)
+                if(corrected.length > 0)
                 {
-                    var tomax = 12;
+                    if(corrected.length > 12)
+                    {
+                        var tomax = 12;
+                    }
+                    else
+                    {
+                        tomax = corrected.length;
+                    }
+                    for(var i = 0;i<tomax;i++)
+                    {
+                        bele += "<tr><td><td>" + parseInt(i+1) +  ".</td><td>" + corrected[i].atitle + "</td><td>" + corrected[i].date1 + "</td><td>" + corrected[i].tipus + "</td><td>redo: " + corrected[i].redo + "</td></tr>";
+                    }
+
                 }
                 else
                 {
-                    tomax = corrected.length;
+                    bele += "<tr style='background-color: #d1ffd3;color:#000000' ><td></td><td>" + "no corrected" + "</td><td></td><td>" + "</td><td>" +  "</td><td></td></tr>";
                 }
-                for(var i = 0;i<tomax;i++)
-                {
-                    bele += "<tr><td><td>" + parseInt(i+1) +  ".</td><td>" + corrected[i].atitle + "</td><td>" + corrected[i].date1 + "</td><td>" + corrected[i].tipus + "</td><td>redo: " + corrected[i].redo + "</td></tr>";
-                }
+            }
 
-            }
-            else
-            {
-                bele += "<tr style='background-color: #d1ffd3;color:#000000' ><td></td><td>" + "no corrected" + "</td><td></td><td>" + "</td><td>" +  "</td><td></td></tr>";
-            }
 
             var fillbody = elem.nextSibling;
 
