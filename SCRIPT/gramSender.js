@@ -1171,6 +1171,7 @@ var submitGram5 = function(atipe)
         hwobj.assigned[curPa].viewed = "yes";
         var allText = document.getElementsByClassName("texInp");
         var tippek = "";
+        var tippArr = [];
 
         for(var i = 0;i<allText.length;i++)
         {
@@ -1185,10 +1186,12 @@ var submitGram5 = function(atipe)
             if(tex == "")
             {
                 tippek = tippek + "GGG_";
+                tippArr.push("GGG");
             }
             else
             {
                 tippek += tex + "_";
+                tippArr.push(tex);
             }
         }
 
@@ -1199,7 +1202,7 @@ var submitGram5 = function(atipe)
         }
 
         var agomb =  document.getElementById("beadGomb");
-        if(tippek.includes("GGG_"))
+        if(tippArr.includes("GGG"))
         {
             if (confirm(globLang.notComplete) == true)
             {
@@ -1207,7 +1210,8 @@ var submitGram5 = function(atipe)
                 document.getElementById("subCovInner").style.height = "40px";
 
                 agomb.innerHTML = globLang.loading;
-                submitSoluProvide(tippek, atipe);
+              //  submitSoluProvide(tippek, atipe);
+                submitSoluProvide(JSON.stringify(tippArr), atipe); // submit as JSON
                 // animacio(elem);
             }
         }
@@ -1216,7 +1220,8 @@ var submitGram5 = function(atipe)
             document.getElementById("subCovInner").style.height = "40px";
 
             agomb.innerHTML = globLang.loading;
-            submitSoluProvide(tippek, atipe); // user tips and the task type
+           // submitSoluProvide(tippek, atipe); // user tips and the task type
+            submitSoluProvide(JSON.stringify(tippArr), atipe); // submit as JSON
             // animacio(elem);
         }
 
@@ -4894,6 +4899,8 @@ function submitVonalas()
 
 
         var tippek = "";
+        var tippArr = [];
+
         var toolong = false;
         for(var i = 0;i<allText.length;i++)
         {
@@ -4911,10 +4918,12 @@ function submitVonalas()
             if(tex == "")
             {
                 tippek = tippek + "GGG_";
+                tippArr.push("GGG");
             }
             else
             {
                 tippek = tippek + tex + "_";
+                tippArr.push(tex);
             }
         }
 
@@ -4925,7 +4934,7 @@ function submitVonalas()
         }
 
         var agomb =  document.getElementById("beadGomb");
-        if(tippek.includes("GGG_"))
+        if(tippArr.includes("GGG"))
         {
           if (confirm(globLang.notComplete) == true)
           {
@@ -4933,7 +4942,8 @@ function submitVonalas()
               document.getElementById("subCovInner").style.height = "40px";
 
               agomb.innerHTML = globLang.loading;
-             submitSoluProvide(tippek, 1);
+           //  submitSoluProvide(tippek, 1);
+              submitSoluProvide(JSON.stringify(tippArr), 1); // submit array as JSON
               // animacio(elem);
           }
         }
@@ -4942,7 +4952,8 @@ function submitVonalas()
             document.getElementById("subCovInner").style.height = "40px";
 
             agomb.innerHTML = globLang.loading;
-          submitSoluProvide(tippek, 1);
+         // submitSoluProvide(tippek, 1);
+            submitSoluProvide(JSON.stringify(tippArr), 1); // submit array as JSON
            // animacio(elem);
         }
 
@@ -4982,8 +4993,9 @@ function submitSoluProvide(tippek, typ)
           //  alert(this.responseText);
             if(this.responseText != "0" + "")
             {
+                alert(this.responseText);
               //  alert(globLang.errNotSubmitted);
-                toLogOut(globLang.errNotSubmitted);
+              //  toLogOut(globLang.errNotSubmitted);
 
                // alert(this.responseText);
             }

@@ -107,10 +107,62 @@ if($code == 0)
     if(isset($_POST['tip']))
     {
         $taskType = $_POST['tip'];
+        if($taskType != 0 && $taskType != 1 && $taskType != 2 && $taskType != 3 && $taskType != 5 && $taskType != 6)
+        {
+            echo "ERROR: No such task type: " . $taskType . ".";
+            exit;
+        }
+        else
+        {
+                // check user input when type vonalas, type 5 and 6
+                $maxi = 150;
+                if($taskType == 1) // vonalas, max 50 chr in one answer
+                {
+                    $maxi = 50;
+                }
+                elseif($taskType == 5)
+                {
+                    $maxi = 60;
+                }
+                elseif($taskType == 6)
+                {
+                    $maxi = 150;
+                }
+                else
+                {
+                    $maxi = 8;
+                }
+
+                if($taskType == 1 || $taskType == 5 || $taskType == 6)
+                {
+                    $tippArray = json_decode($Tipps); // tipps are sent here in JSON
+                    for($i=0;$i<count($tippArray);$i++)
+                    {
+                        if(strlen($tippArray[$i]) > $maxi)
+                        {
+                            echo "ERROR: The submitted text is too long - 5 6.";
+                            exit;
+                        }
+                    }
+                    // vissza kell alakítani az array-t erre a formátumra: valami_GGG_szoveg_szoveg_GGG_
+                    $Tipps = "";
+                    for($i=0;$i<count($tippArray);$i++)
+                    {
+                       $Tipps .= $tippArray[$i] . "_";
+                    }
+                }
+
+
+
+
+
+
+
+        }
     }
     else
     {
-        echo "ERROR: no task type";
+        echo "ERROR: no task type.";
     }
     if(isset($_POST['redone']))
     {
@@ -120,6 +172,9 @@ if($code == 0)
     {
         $redone = "no";
     }
+
+
+
 
     $aFileNev = "../FELHASZ/ausers.json";
 
