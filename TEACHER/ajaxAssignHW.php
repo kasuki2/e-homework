@@ -177,7 +177,7 @@ function goMail($to)
 
 
     $subject = "new homework";
-    $message = "You have received some new homework. If you wish to see it now, go to https://ehw.cloud.";
+    $message = "You have received some new homework. If you wish to see it now, go to https://ehw.cloud";
     $headers = "from: postmaster@ehw.cloud \n";
     $headers .= "X-mailer: phpWebmail \n";
     $ifsent = mail($to, $subject, $message, $headers);
