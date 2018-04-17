@@ -590,8 +590,9 @@ elseif($code == 1) // BEJELENTKEZÉS
     $regiok = false;
     for($i=0;$i<count($fileArray);$i++)
     {
-        if($fileArray[$i]->userName == $usNev)
+        if($fileArray[$i]->userName == $usNev || $fileArray[$i]->omail == $usNev)
         {
+            $usNev = $fileArray[$i]->userName;
             $apa = $fileArray[$i]->passw;
            if(CheckUser2($apa, $apass))
            {
@@ -610,7 +611,7 @@ elseif($code == 1) // BEJELENTKEZÉS
         $_SESSION["tempide"] = $uniID;
         $_SESSION["felhasz"] = $usNev;
         $_SESSION["jelszo"] = $apass;
-        echo "0+" . $uniID; // e helyett a uniqe
+        echo "0+" . $uniID . "+" . $usNev; // e helyett a uniqe
         // we need to save again because of the tempid
 
         $toSave = json_encode($fileArray);

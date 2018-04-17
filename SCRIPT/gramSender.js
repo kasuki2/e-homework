@@ -569,9 +569,9 @@ function sendInfo(cod, notif)
 
                 var resze = valasz.split('+'); // resze[1] a tempid
 
-                if(resze[0] == 0) // SIKERES BEJELENTKEZÉS
+                if(resze[0] === "0") // SIKERES BEJELENTKEZÉS
                 {
-
+                    alert(valasz);
                     var rememberCB = document.getElementById("rememberMe");
                     if(rememberCB.checked)
                     {
@@ -597,7 +597,7 @@ function sendInfo(cod, notif)
                     dealMenuButt();
                     updateHomework(10); // ask for homework status
 
-                    if(userNev == "Imre")
+                    if(userNev === "Imre")
                     {
                         document.getElementById("vocgem").style.visibility = "visible";
                     }
