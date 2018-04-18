@@ -26,8 +26,7 @@ if(!isset($_SESSION["jelszo"]))
 
     <title>ehw</title>
 
-    <script src="SCRIPT/gramSender.js?updated=20180416"></script>
-    <script src="SCRIPT/gems.js?updated=1492974572411"></script>
+
     <link rel="stylesheet" type="text/css" href="css_sender2.css">
     <link rel="stylesheet" type="text/css" href="style1.css">
     <link rel="stylesheet" type="text/css" href="helpers.css">
@@ -501,6 +500,7 @@ if(!isset($_SESSION["jelszo"]))
     </div><!-- centering end -->
 </div>
 
-
+<script src="SCRIPT/gramSender.js?updated=20180416"></script>
+<script src="SCRIPT/gems.js?updated=1492974572411"></script>
 </body>
 </html>
