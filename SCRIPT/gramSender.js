@@ -571,7 +571,7 @@ function sendInfo(cod, notif)
 
                 if(resze[0] === "0") // SIKERES BEJELENTKEZÉS
                 {
-                    alert(valasz);
+
                     var rememberCB = document.getElementById("rememberMe");
                     if(rememberCB.checked)
                     {
