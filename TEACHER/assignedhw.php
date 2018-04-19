@@ -63,12 +63,40 @@ require_once "checklogin.php";
         function getFiles(el)
         {
             elem = el;
-            updateHW("ajaxAssagnedHw.php" , "user=" + el.innerHTML).then(function (res) {
+            updateHW("ajaxAssagnedHw.php" , "user=" + el.innerHTML + "&code=0").then(function (res) {
                 fillResult(res);
             });
         }
 
 
+        function delElem() {
+            var checkBoxes = document.getElementsByClassName('acb');
+            var checked = [];
+            for(var i = 0;i<checkBoxes.length;i++)
+            {
+                if(checkBoxes[i].checked)
+                {
+                    checked.push(globalObj.assigned[i].id);
+                }
+            }
+
+
+            if(checked.length >0)
+            {
+                updateHW("ajaxAssagnedHw.php" , "user=" + elem.innerHTML + "&code=1" + "&numbers=" + JSON.stringify(checked)).then(function (res) {
+
+                    getFiles(elem);
+                    alert(res);
+                });
+            }
+            else
+            {
+                alert("Nem jelöltél ki egy feladatot sem.");
+            }
+
+        }
+
+        var globalObj;
         function fillResult(res)
         {
 
@@ -76,6 +104,7 @@ require_once "checklogin.php";
 
 
           var obj = JSON.parse(res);
+            globalObj = obj;
 
             var resultDiv = document.getElementById("result");
           var assigned = obj.assigned;
@@ -85,6 +114,8 @@ require_once "checklogin.php";
 
           var bele = "";
             bele += "<tr style='background-color: #9a2392;color:#ffd5f4' ><td></td><td>" + "ASSIGNED" + "</td><td></td><td>" + "</td><td>" +  "</td><td></td></tr>";
+            bele += "<tr style='background-color: #9a2392;color:#ffd5f4' ><td></td><td><button onclick='delElem();' >delete</button></td><td></td><td>" + "</td><td>" +  "</td><td></td></tr>";
+
           if(assigned != null)
           {
               if(assigned.length > 0)
@@ -92,7 +123,7 @@ require_once "checklogin.php";
                   assigned.reverse();
                   for(var i = 0;i<assigned.length;i++)
                   {
-                      bele += "<tr><td><td>" + parseInt(i+1) +  ".</td><td>" + assigned[i].atitle + "</td><td>" + assigned[i].date1 + "</td><td>" + assigned[i].tipus + "</td><td>redo: " + assigned[i].redo + "</td></tr>";
+                      bele += "<tr><td><input type='checkbox' class='acb' id='" + i + "' ><td>" + parseInt(i+1) +  ".</td><td>" + assigned[i].atitle + "</td><td>" + assigned[i].date1 + "</td><td>" + assigned[i].tipus + "</td><td>redo: " + assigned[i].redo + "</td></tr>";
                   }
 
               }
