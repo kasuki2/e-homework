@@ -173,7 +173,7 @@ require_once "checklogin.php";
                     }
                     for(var i = 0;i<tomax;i++)
                     {
-                        bele += "<tr><td><td>" + parseInt(i+1) +  ".</td><td>" + corrected[i].atitle + "</td><td>" + corrected[i].date1 + "</td><td>" + corrected[i].tipus + "</td><td>redo: " + corrected[i].redo + "</td></tr>";
+                        bele += "<tr><td><td>" + parseInt(i+1) +  ".</td><td>" + corrected[i].atitle + "</td><td>" + corrected[i].viewed + "</td><td>" + corrected[i].tipus + "</td><td>redo: " + corrected[i].redo + "</td></tr>";
                     }
 
                 }
