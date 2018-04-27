@@ -1951,7 +1951,7 @@ function vonalClick(el, e)
 
         var avonal = pari2.getElementsByClassName("vona")[0];
 
-        avonal.innerHTML = el.innerHTML;
+        avonal.innerHTML = el.innerHTML.replace("<br>", "");
         avonal.style.color = "#4466ff";
         avonal.style.fontWeight = "bold";
 
@@ -2046,7 +2046,7 @@ var procMcGram = function(inp)
 
             var agi = contents[i].solutions;
 
-            //  var vonal = "<div class='tooltip2' id='" + i + k  + "' onclick='vonalClick(this);' > <span class='vona'>__________</span><span>" + agi[k] + "</span> <span id='s" + i + k + "' class='tooltiptext2'>" + inn + "</span></div>";
+
             var vonal = "<span class='tooltip2' id='" + i + k  + "' onclick='vonalClick(this, event);' > <span class='vona'>__________</span><span id='s" + i + k + "' class='tooltiptext2'>" + inn + "</span></span>";
 
             if(k == sentence.length -1)
