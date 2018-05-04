@@ -21,6 +21,10 @@ require_once "checklogin.php";
         function fileNevClick(eli)
         {
           var fne = eli.innerHTML;
+          if(eli.innerHTML === null)
+          {
+              fne = eli.value;
+          }
           var fn = fne.split('.');
 
             var step1 = eli.innerHTML.split('FELADATOK');
@@ -56,8 +60,33 @@ require_once "checklogin.php";
 
         }
 
+        function update(fneve)
+        {
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+
+
+                    showBasicInfo2(this.responseText);
+
+                }
+            };
+            kuld = "openThis=" + fneve;
+            xhttp.open("POST", "ajaxsendBasic.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send(kuld);
+        }
+
+
+        function showBasicInfo2(inpu) {
+
+            showInfo(inpu);
+        }
+
         function showBasicInfo(inpu)
         {
+
            var infok = inpu.split('~');
             document.getElementById("taskTitle").innerHTML = infok[0];
             document.getElementById("instru").value = infok[1];
@@ -157,7 +186,7 @@ function mondatClick(cod)
     {
         if(tWeig[i].checked)
         {
-            tWeig = i;
+            taskWe = i;
             break;
         }
     }
@@ -193,6 +222,8 @@ function mondatClick(cod)
 function showGram6(inp)
 {
     document.getElementById("okdiv").innerHTML = inp;
+    var azElem = document.getElementById("fileName");
+    update(azElem.value);
 }
 
 

@@ -303,6 +303,7 @@ function showInfo(inpu)
     {
         globalContents = taskFile.contents;
         contents2 = taskFile.contents;
+        document.getElementById("examples").value = taskFile.exa;
         var longSe = "";
         for(i=0;i<contents2.length;i++)
         {

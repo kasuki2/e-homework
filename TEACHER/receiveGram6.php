@@ -130,7 +130,7 @@ if($code == 0) // add vocab
         $toMent = json_encode($fileArray);
         file_put_contents($aFileNev, $toMent);
        // echo $taskTit . "~" . $instr . "~" . $examples . "~" . $toMent;
-        echo "ITEM ADDED";
+        echo "ITEM ADDED " . count($fileArray->contents);
     }
 
     //  echo "minden ok";
