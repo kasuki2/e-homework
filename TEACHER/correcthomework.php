@@ -3,40 +3,70 @@
 session_start();
 $jelsz = "";
 $login = false;
-
+$acr = "$2y$10$01xBy.dEmWE9yYXCzAHCTeTMrjzhSjzvHhoV3f0wf94Rxx.KKllXO";
+$acrS = '$2y$10$H1T6yJiVpnmHaXC3QKG7O.3lnktfZ3cXIsZL.8.NzNwq79LUNzfOK';
 // arriving here from another page, not from the login page
+$info = "0";
 if(!isset($_POST["jesz"])) // ha máshonnan jön, és nem küld jelszót, de már be vagyun lépve, akkor OK
 {
-    if( $_SESSION["ajsz"] == "Kasuki2009")
+    if( CheckUser2($acr, $_SESSION["ajsz"]))
     {
         $login = true;
+
     }
 }
 
 if(isset($_SESSION["ajsz"]))
 {
-    if($_SESSION["ajsz"] == "Kasuki2009")
+    if( CheckUser2($acr, $_SESSION["ajsz"]))
     {
         $login = true;
+
     }
 
 }
 // log in from log-in page, there is a password sent
 if(isset($_POST["jesz"]))
 {
+    /*
     if($_POST["jesz"] == "Kasuki2009")
     {
         $login = true;
         $_SESSION["ajsz"] = $_POST["jesz"];
     }
+    */
+    if( CheckUser2($acr, $_POST["jesz"]))
+    {
+        $login = true;
+        $_SESSION["ajsz"] = $_POST["jesz"];
 
+    }
+
+}
+// check code number
+$numok = CheckUser2($acrS, $_POST['pincode']);
+
+if( !$numok)
+{
+    $login = false;
+    echo $numok;
 }
 
 if(!$login)
 {
     require_once "config.php";
+
     header("Location: " . $TEACHER_LOGIN);
     exit();
+}
+
+function CheckUser2($pass_crypt, $pass)
+{
+    if ($pass_crypt == password_verify($pass, $pass_crypt)) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 /*

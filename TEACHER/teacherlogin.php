@@ -35,14 +35,14 @@ require_once "config.php";
 <body style="background-color:#aabbcc;vertical-align:middle">
 
 <?php
-
+$info = "";
 if(isset($_POST["logout"]))
 {
     if($_POST["logout"] == "over")
     {
         unset($_SESSION['ajsz']);
 
-        echo "logged out";
+        $info = "You have logged out.";
     }
 
 
@@ -56,6 +56,7 @@ if(isset($_POST["logout"]))
 
 
     <div id="cim" style="margin-left: auto;margin-right: auto;width: 340px;color: #25719e" >
+        <div style="float: right" ><?php echo $info; ?></div>
         <div style="font-family: Aldrich, Tahoma, Arial, serif;font-size: 20px;font-weight: bold;padding-top: 84px" >TEACHER'S LOGIN TO EHW</div>
 
     <form action= "<?php echo $TEACHER_FIRST; ?>" method="post">
