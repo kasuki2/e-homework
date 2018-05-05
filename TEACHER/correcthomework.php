@@ -40,22 +40,23 @@ if(isset($_POST["jesz"]))
         $login = true;
         $_SESSION["ajsz"] = $_POST["jesz"];
 
+        $numok = CheckUser2($acrS, $_POST['pincode']);
+
+        if( !$numok)
+        {
+            $login = false;
+            // echo $numok;
+        }
+
     }
 
 }
 // check code number
-$numok = CheckUser2($acrS, $_POST['pincode']);
 
-if( !$numok)
-{
-    $login = false;
-    echo $numok;
-}
 
 if(!$login)
 {
     require_once "config.php";
-
     header("Location: " . $TEACHER_LOGIN);
     exit();
 }
