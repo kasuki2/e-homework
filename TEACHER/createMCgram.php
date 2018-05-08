@@ -360,8 +360,29 @@ $fils = array_values($fils);
         function uzenet(inpe)
         {
             document.getElementById("totalText").innerHTML = inpe;
+
+            var azElem = document.getElementById("fileName");
+            update(azElem.value);
         }
 
+
+        function update(fneve)
+        {
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+
+
+                    showInfo(this.responseText);
+
+                }
+            };
+            kuld = "openThis=" + fneve;
+            xhttp.open("POST", "ajaxsendBasic.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send(kuld);
+        }
 
 
 

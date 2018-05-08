@@ -61,9 +61,9 @@ if(isset($_POST["logout"]))
 
     <form action= "<?php echo $TEACHER_FIRST; ?>" method="post">
         Password:<br>
-        <input type="text" name="jesz" value=""><br>
+        <input type="password" name="jesz" value=""><br>
         The code you got in the e-mail:<br>
-        <input type="text" name="pincode" value="" ><br><br>
+        <input type="password" name="pincode" value="" ><br><br>
         <input type="submit" value="Submit">
 
 
