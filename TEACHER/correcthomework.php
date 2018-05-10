@@ -762,13 +762,23 @@ else
                     allSolus += solu[s] + " - ";
                 }
 
+                if(parseInt(i+1)%2===0)
+                {
+                    soluTab += "<tr style='background-color: #d0f9fb' ><td>" + parseInt(i+1) + ".<td style='color: #009100' >" + allSolus + "</td><td></td><td></td></tr>";
+                    soluTab += "<tr style='background-color: #d0f9fb' ><td></td><td>" + userTips[i] + "</td><td>" + ok + "</td><td><input type='text' class='Trem' id='trem" + i + "' value='-' ></td></tr>";
+                }
+                else
+                {
+                    soluTab += "<tr style='background-color: #ffffff' ><td>" + parseInt(i+1) + ".<td style='color: #009100'>" + allSolus + "</td><td></td><td></td></tr>";
+                    soluTab += "<tr style='background-color: #ffffff' ><td></td><td>" + userTips[i] + "</td><td>" + ok + "</td><td><input type='text' class='Trem' id='trem" + i + "' value='-' ></td></tr>";
+                }
 
-                soluTab += "<tr><td>" + allSolus + "</td></tr><tr><td>" + userTips[i] + "</td><td>" + ok + "</td><td><input type='text' class='Trem' id='trem" + i + "' value='-' ></td></tr>";
+
             }
 
             var cimdiv = "<div style='padding-top:12px;padding-bottom: 12px;padding-left: 12px;font-weight: bold;color: #723a14;' >Correcting: " + globTaskFile.title + "</div>";
             var sendButt = "<div style='padding: 8px;text-align: center' ><button  onclick='sendCorr();' >SEND</button></div>";
-            document.getElementById("vonalasResult").innerHTML = cimdiv + "<table style='margin-left: auto;margin-right: auto;padding: 4px;background-color: #ffffff' >" + soluTab + "</table>" + sendButt;
+            document.getElementById("vonalasResult").innerHTML = cimdiv + "<table id='soluTable' style='margin-left: auto;margin-right: auto;padding: 4px;background-color: #ffffff' >" + soluTab + "</table>" + sendButt;
 
 
         }

@@ -324,7 +324,7 @@ function itemInfo(be, type) {
 
   if(type != 5)
   {
-    document.getElementById("tobecorrected").innerHTML = JSON.stringify(globalContents[be]);
+    document.getElementById("tobecorrected").value = JSON.stringify(globalContents[be]);
   }
   else
     {

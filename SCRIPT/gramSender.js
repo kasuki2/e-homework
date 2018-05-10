@@ -3792,8 +3792,8 @@ var procGram6corrected = function(muster, userTippek, teacherRemakrs)
     var longS = "";
     for(var i = 0;i<contents.length;i++)
     {
-        longS += "<tr><td>" + contents[i].longsent + "</td></tr>";
-        if(contents[i].starter.trim() != "")
+        longS += "<tr><td>" + parseInt(i+1) + ". " + contents[i].longsent + "</td></tr>";
+        if(contents[i].starter.trim() !== "")
         {
             longS += "<tr><td>" + contents[i].starter + "</td></tr>";
         }
