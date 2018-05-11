@@ -40,11 +40,20 @@ else
 
 
 $tempid = $_POST['tempid'];
-if($tempid !=  $_SESSION["tempide"])
+if(!isset($_SESSION["tempide"]))
+{
+    echo "1";
+    exit;
+}
+else
+{
+    if($tempid !=  $_SESSION["tempide"])
     {
         echo "1";
         exit;
     }
+}
+
 
 
 if(isset($_POST['taskID']))
@@ -216,6 +225,12 @@ if($code == 0)
         $homeworkFile = file_get_contents($myPath);
 
         $homeworkArr = json_decode($homeworkFile);
+
+        // IS THIS ID IN THE SUBMITTED TASKS ALREADY?
+        // IF YES, YOU CANNOT SUBMIT IT - CANNOT SUMBIT IT TWOCE
+
+
+
         $old = count($homeworkArr->assigned);
         // DELETE TASK FROM ASSIGNED
         $ujAss = array_values(array_filter($homeworkArr->assigned, function ($v) use ($taskID) {
@@ -223,6 +238,16 @@ if($code == 0)
         }));
         $homeworkArr->assigned = $ujAss;
 
+        for($v=0;$v<count($homeworkArr->submitted);$v++)
+        {
+            if($homeworkArr->submitted[$v]->id == $taskID)
+            {
+                echo "This task has already been submitted and lost forever.";
+                $toment = json_encode($homeworkArr);
+                file_put_contents($myPath, $toment);
+                exit;
+            }
+        }
 
 
         if ($homeworkArr->submitted != null) {

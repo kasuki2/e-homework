@@ -3792,10 +3792,20 @@ var procGram6corrected = function(muster, userTippek, teacherRemakrs)
     var longS = "";
     for(var i = 0;i<contents.length;i++)
     {
-        longS += "<tr><td>" + parseInt(i+1) + ". " + contents[i].longsent + "</td></tr>";
+        if(TRemarks[i] != "-" && TRemarks[i] != "")
+        {
+           // var remarkStyle = "<span style='background-color: #3e9fd4;padding: 3px;color:#ffffff;font-weight: bold' >!</span>";
+            remarkStyle = "<div class='arrow' ></div>";
+
+        }
+        else
+        {
+            remarkStyle = "";
+        }
+        longS += "<tr><td colspan='2' >" + parseInt(i+1) + ". " + contents[i].longsent + "</td></tr>";
         if(contents[i].starter.trim() !== "")
         {
-            longS += "<tr><td>" + contents[i].starter + "</td></tr>";
+            longS += "<tr><td colspan='2' >" + contents[i].starter + "</td></tr>";
         }
 
         if(uTipps[i] != "GGG")
@@ -3803,12 +3813,12 @@ var procGram6corrected = function(muster, userTippek, teacherRemakrs)
             if(tanarJav[i] == "OK")
             {
                 corrNum++;
-                vonal = "<textarea readonly onclick='gram6expla(" + i + ", event);' style='width:100%;resize: none;font-weight: bold;color:#00bb00;font-size:22px;font-family: " + '"' + 'Nanum Pen Script' + '"' + " '>" + uTipps[i] + "</textarea>";
+                vonal = "<textarea readonly onclick='gram6expla(" + i + ", event);' style='width:100%;resize: none; font-weight: bold;color:#00bb00;font-size:22px;font-family: " + '"' + 'Nanum Pen Script' + '"' + " ' >" + uTipps[i] + "</textarea>";
             }
             else
             {
                 incorNum++;
-                vonal = "<textarea readonly  onclick='gram6expla(" + i + ", event);' style='width:100%;resize: none;font-weight: bold;color:#ff0000;font-size:22px;font-family: " + '"' + 'Nanum Pen Script' + '"' + " '>" + uTipps[i] + "</textarea>";
+                vonal = "<textarea readonly  onclick='gram6expla(" + i + ", event);' style='width:100%;resize: none;font-weight: bold;color:#ff0000;font-size:22px;font-family: " + '"' + 'Nanum Pen Script' + '"' + " '>" +  uTipps[i] + "</textarea>";
             }
         }
         else
@@ -3818,8 +3828,8 @@ var procGram6corrected = function(muster, userTippek, teacherRemakrs)
             vonal = "<textarea readonly  onclick='gram6expla(" + i + ", event);' style='width:100%;resize: none;font-weight: bold;color:#444444'>" + globLang.noanswer + "</textarea>";
         }
 
-        longS +=  "<tr><td><div class='sorexp' ><div class='vonalasExp'  id='tool2" + i + "'></div></div></td></tr>";
-        longS += "<tr><td>" + vonal + "</td></tr>";
+        longS +=  "<tr><td colspan='2' ><div class='sorexp' ><div class='vonalasExp'  id='tool2" + i + "'></div></div></td></tr>";
+        longS += "<tr style='vertical-align: top' ><td>" + remarkStyle + "</td><td>" + vonal + "</td></tr>";
     }
 
     var eredDiv = "<div class='kisParal' ><span class='resultInfo' >Correct: "+ corrNum +" / "+ contents.length +"</span> | <span class='resultInfoIncorr'> Incorrect: "+ incorNum + "</span> of which not answered: " + notFilled + "</div>";
@@ -3876,7 +3886,7 @@ function gram6expla(ss, e)
         bele += tarti[i] + vege;
     }
 
-    if(GLOBTEACHREMARKS[ss] != "-" || GLOBTEACHREMARKS[ss] != "")
+    if(GLOBTEACHREMARKS[ss] != "-" && GLOBTEACHREMARKS[ss] != "")
     {
         bele += "<br />" + "* " + GLOBTEACHREMARKS[ss];
     }
@@ -4889,8 +4899,8 @@ function cimGauge(tit, instr, level)
 function submitVonalas()
 {
 
-    var curPa = hwobj.assigned.findIndex(function(x) {if(x.id == globFeladatID){ return true }});
-    if(curPa != -1)
+    var curPa = hwobj.assigned.findIndex(function(x) {if(x.id === globFeladatID){ return true }});
+    if(curPa !== -1)
     {
 
         hwobj.assigned[curPa].viewed = "yes";
@@ -4983,21 +4993,19 @@ function submitSoluProvide(tippek, typ)
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
 
-
-            // alert(this.responseText);
-         //   document.getElementById("testResu").innerHTML = this.responseText;
-          //  document.getElementById("testResults").innerHTML = this.responseText;
-
             animacio();
             updateHomework(10);
           //  alert(this.responseText);
-            if(this.responseText != "0" + "")
+            if(this.responseText !== "0" + "")
             {
-                alert(this.responseText);
-              //  alert(globLang.errNotSubmitted);
-              //  toLogOut(globLang.errNotSubmitted);
-
-               // alert(this.responseText);
+                if(this.responseText === "1" + "")
+                {
+                    toLogOut(globLang.errNotSubmitted);
+                }
+                else
+                {
+                    alert(this.responseText);
+                }
             }
         }
     };

@@ -500,7 +500,7 @@ if(!isset($_SESSION["jelszo"]))
     </div><!-- centering end -->
 </div>
 
-<script src="SCRIPT/gramSender.js?updated=20180426"></script>
+<script src="SCRIPT/gramSender.js?updated=20180511"></script>
 <script src="SCRIPT/gems.js?updated=1492974572411"></script>
 </body>
 </html>
