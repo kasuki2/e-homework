@@ -125,27 +125,31 @@ function showInfo(inpu)
     }
 
 
-    if(taskFile.helps != null)
+    if(taskFile.helps !== null && taskFile.helps !== undefined )
     {
         var helps =  document.getElementById("helperFile");
-        var allHelps = "";
-        if(taskFile.helps.length>1)
+        if(helps !== null)
         {
-            var veg = "€";
-        }
-        else
-        {
-            veg = "";
-        }
-        for(i=0;i<taskFile.helps.length;i++)
-        {
-            if(i==taskFile.helps.length-1)
+            var allHelps = "";
+            if(taskFile.helps.length>1)
+            {
+                var veg = "€";
+            }
+            else
             {
                 veg = "";
             }
-            allHelps += taskFile.helps[i] + veg;
+            for(i=0;i<taskFile.helps.length;i++)
+            {
+                if(i==taskFile.helps.length-1)
+                {
+                    veg = "";
+                }
+                allHelps += taskFile.helps[i] + veg;
+            }
+            helps.value = allHelps;
         }
-        helps.value = allHelps;
+
     }
 
 
@@ -303,7 +307,12 @@ function showInfo(inpu)
     {
         globalContents = taskFile.contents;
         contents2 = taskFile.contents;
-        document.getElementById("examples").value = taskFile.exa;
+        var examples1 = document.getElementById("examples");
+        if(examples1 !== null)
+        {
+           examples1.value = taskFile.exa;
+        }
+
         var longSe = "";
         for(i=0;i<contents2.length;i++)
         {
