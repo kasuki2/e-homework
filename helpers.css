@@ -215,6 +215,16 @@ h4
     margin-right: 3px;
 }
 
+.arrow2 {
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+
+    border-left: 7px solid #ff272c;
+    display: inline-block;
+    margin-right: 3px;
+}
 .redcol
 {
     color: #e21e08;

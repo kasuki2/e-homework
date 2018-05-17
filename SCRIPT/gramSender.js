@@ -112,6 +112,8 @@ function manageLang()
             hunga.del2 = "törlés";
             hunga.redohw = "újra megoldom";
 
+            hunga.directUser = "Klikkeljen a beírt megoldásra. A kinyíló ablakban a tanár megjegyzése is olvasható.";
+
             globLang = hunga;
           //  return hunga[att];
 
@@ -206,6 +208,8 @@ function manageLang()
             angol.logInAgain = "Please, log in again.";
             angol.del2 = "delete";
             angol.redohw = "redo this";
+
+            angol.directUser = "Click on the solution you wrote in. The pop-up contains your teacher's remark, too.";
 
             globLang = angol;
           //  return angol[att];
@@ -2963,11 +2967,9 @@ function clrPopups()
     }
 
 
-}   if(popupid3 != null) // close previous
-    {
-        var kids =  popupid3.children;
-        kids[1].style.visibility = "hidden";
-    }
+}
+
+
 
     if(popupVon != null)
     {
@@ -3795,7 +3797,7 @@ var procGram6corrected = function(muster, userTippek, teacherRemakrs)
         if(TRemarks[i] != "-" && TRemarks[i] != "")
         {
            // var remarkStyle = "<span style='background-color: #3e9fd4;padding: 3px;color:#ffffff;font-weight: bold' >!</span>";
-            remarkStyle = "<div class='arrow' ></div>";
+            remarkStyle = "<div class='arrow2' onclick='directuser();' ></div>";
 
         }
         else
@@ -3808,9 +3810,9 @@ var procGram6corrected = function(muster, userTippek, teacherRemakrs)
             longS += "<tr><td colspan='2' >" + contents[i].starter + "</td></tr>";
         }
 
-        if(uTipps[i] != "GGG")
+        if(uTipps[i] !== "GGG")
         {
-            if(tanarJav[i] == "OK")
+            if(tanarJav[i] === "OK")
             {
                 corrNum++;
                 vonal = "<textarea readonly onclick='gram6expla(" + i + ", event);' style='width:100%;resize: none; font-weight: bold;color:#00bb00;font-size:22px;font-family: " + '"' + 'Nanum Pen Script' + '"' + " ' >" + uTipps[i] + "</textarea>";
@@ -3829,7 +3831,7 @@ var procGram6corrected = function(muster, userTippek, teacherRemakrs)
         }
 
         longS +=  "<tr><td colspan='2' ><div class='sorexp' ><div class='vonalasExp'  id='tool2" + i + "'></div></div></td></tr>";
-        longS += "<tr style='vertical-align: top' ><td>" + remarkStyle + "</td><td>" + vonal + "</td></tr>";
+        longS += "<tr style='vertical-align: top' ><td style='width: 6px' >" + remarkStyle + "</td><td>" + vonal + "</td></tr>";
     }
 
     var eredDiv = "<div class='kisParal' ><span class='resultInfo' >Correct: "+ corrNum +" / "+ contents.length +"</span> | <span class='resultInfoIncorr'> Incorrect: "+ incorNum + "</span> of which not answered: " + notFilled + "</div>";
@@ -3888,7 +3890,7 @@ function gram6expla(ss, e)
 
     if(GLOBTEACHREMARKS[ss] != "-" && GLOBTEACHREMARKS[ss] != "")
     {
-        bele += "<br />" + "* " + GLOBTEACHREMARKS[ss];
+        bele += "<br />" + "<span style='color:#00fe00;' >" + GLOBTEACHREMARKS[ss] + "</span>";
     }
 
     var pupup = document.getElementById("tool2" + ss);
@@ -4157,6 +4159,10 @@ function gram5Show2(ss, e)
 
 }
 
+function directuser() {
+    alert(globLang.directUser);
+}
+
 var GLOBTEACHREMARKS;
 var procVonalasCorrected = function (muster, userTippek, teacherRemakrs)
 {
@@ -4212,6 +4218,8 @@ var procVonalasCorrected = function (muster, userTippek, teacherRemakrs)
   var z = 0;
   for(var i = 0;i<sentencArr.length;i++)
   {
+
+
       sor = "";
       sentences = "";
       for(var s = 0;s<Contents[i].sentence.length;s++)
@@ -4235,8 +4243,19 @@ var procVonalasCorrected = function (muster, userTippek, teacherRemakrs)
           else {
               beir = userTipArr[z];
           }
-          var vonal = "<span class='tooltip2' onclick='reviewVonalas(this, event);' id='"+ z +"' ><span id='" + i + "-" + s + "'  class='vonalasCorr' " + corCol + " >" + beir + "</span><div class='tooltipVocab' id='tool" + z + "' ></div></span>";
-          if(s == Contents[i].sentence.length-1)
+
+          if(TRemarks[z] !== "-" && TRemarks[z] !== "")
+          {
+              triang = "<div class='arrow2'></div>";
+          }
+          else
+          {
+              triang = "";
+          }
+
+         // var vonal = "<span class='tooltip2' onclick='reviewVonalas(this, event);' id='"+ z +"' ><span id='" + i + "-" + s + "'  class='vonalasCorr' " + corCol + " >" + triang + beir + "</span><div class='tooltipVocab' id='tool" + z + "' ></div></span>";
+          var vonal = "<span class='tooltip2' onclick='reviewVonalas(this, event);' id='"+ i + "-" + z +"' ><span id='" + i + "-" + s + "'  class='vonalasCorr' " + corCol + " >" + triang + beir + "</span></span>";
+          if(s === Contents[i].sentence.length-1)
           {
               vonal = "";
           }
@@ -4246,7 +4265,7 @@ var procVonalasCorrected = function (muster, userTippek, teacherRemakrs)
           }
           sentences = sentences + Contents[i].sentence[s] + vonal;
       }
-      var sorszam = i+1;
+      var sorszam = parseInt(i+1);
       sor = "<tr><td colspan='2' ><div class='sorexp' ><div class='vonalasExp' id='tool2" + i + "' ></div></div></td></tr>";
       sor += "<tr><td style='vertical-align: top;padding-top: 4px' >" + sorszam + ".</td><td style='vertical-align: top;padding-left: 8px' >" + sentences + "</td></tr>";
       fullSor = fullSor + sor;
@@ -4257,8 +4276,8 @@ var procVonalasCorrected = function (muster, userTippek, teacherRemakrs)
 
 
 
-    var messSor = "<tr><td colspan='2' class='techerMessage'>" + getMessage() + "</td></tr>";
-  var fullTable = "<table class='taskTable' cellpadding='0' cellspacing='0' >" + fullSor + messSor + "</table>";
+   // var messSor = "<tr><td colspan='2' class='techerMessage'>" + getMessage() + "</td></tr>";
+  var fullTable = "<table class='taskTable' cellpadding='0' cellspacing='0' >" + fullSor + "</table>";
 
 
     // var apages = getOldPage();
@@ -4295,6 +4314,8 @@ var procVonalasCorrected = function (muster, userTippek, teacherRemakrs)
 var popupVon;
 function reviewVonalas(elem, e)
 {
+
+   // alert(elem.id);
     e.stopPropagation();
 
     var allYe = document.getElementsByClassName("tooltip2");
@@ -4307,30 +4328,39 @@ function reviewVonalas(elem, e)
     var kid1 = kids[0].id;
 
     var szamok = kid1.split("-");
-
-    var popupAzo = "tool2" + szamok[0];
+    var sorsz2 = elem.id.split("-");
+    var popupAzo = "tool2" + sorsz2[0];
 
     if(popupVon != null)
     {
         document.getElementById(popupVon).style.visibility = "hidden";
     }
-    popupVon = popupAzo;
+    popupVon = "tool2" + sorsz2[0];
 
+    /*
     if(popupid3 != null)
     {
         var kid = popupid3.children;
         kid[1].style.visibility = "hidden";
     }
-    popupid3 = elem;
-   // alert(GLOBTEACHREMARKS[elem.id]);
-    var toltel = GLOBTEACHREMARKS[elem.id];
-    if(toltel.trim() == "-")
+    */
+   // popupid3 = elem;
+
+    var toltel = "???";
+
+    var toltel = GLOBTEACHREMARKS[sorsz2[1]];
+
+    if(toltel.trim() === "-")
     {
         toltel = "";
     }
+    else
+    {
+        toltel = "<br /><span style='color: #00fe00' >" + toltel + "</span>";
+    }
 
     var corrSolution = globObj.contents[szamok[0]].explain[szamok[1]];
-    var allPopup = corrSolution + "<br />" + toltel;
+    var allPopup = corrSolution + toltel;
 
     document.getElementById(popupAzo).innerHTML = allPopup;
 
