@@ -449,6 +449,10 @@ function getStorage(key)
     }
 }
 
+function closePopUp() {
+    document.getElementById("fullCover").style.display = "none";
+}
+
 function sendInfo(cod, notif)
 {
     if(cod === 0)
@@ -485,6 +489,13 @@ function sendInfo(cod, notif)
 
         kuld = "user=" + userNev + "&pw=" + pass1 + "&code=" + "1"; // code 1 BEJELENTEKZÉS
 
+    }
+    else if(cod === 99) // sign in from pop up
+    {
+        var userN = document.getElementById("popUpName").value.trim();
+        var userP = document.getElementById("popUpPass").value.trim();
+
+        kuld = "user=" + userN + "&pw=" + userP + "&code=" + "1"; // code 1 BEJELENTEKZÉS POP UP
     }
     else if(cod === 2) // LOG OUT
     {
@@ -620,6 +631,37 @@ function sendInfo(cod, notif)
                     document.getElementById("inPass").value = "0";
                 }
 
+            }
+            else if(cod === 99) // BEJELENTKEZÉS POP UP RÓL
+            {
+                var resze = valasz.split('+'); // resze[1] a tempid
+
+                if(resze[0] === "0") // SIKERES BEJELENTKEZÉS POP UP RÓL
+                {
+                    document.getElementById("tempida").value = resze[1];
+
+                    document.getElementById("usNamein").innerHTML = resze[2];
+
+                    document.getElementById("inName").value = userN;
+                    document.getElementById("inPass").value = userP;
+
+                    document.getElementById("fullCover").style.display = "none";
+                    var submitCover = document.getElementById("submitCover");
+                    if(submitCover !== null)
+                    {
+                        submitCover.style.height = "0";
+                        var submitBele = document.getElementById("subCovInner");
+                        if(submitBele !== null)
+                        {
+                            submitBele.style.height = "0";
+                        }
+                    }
+
+                }
+                else
+                {
+                    document.getElementById("popUpMessage").innerHTML = "Sikertelen bejelentkezés.";
+                }
             }
             else if(cod === 2) // kijelentkezés SIKERES???
             {
@@ -5030,7 +5072,8 @@ function submitSoluProvide(tippek, typ)
             {
                 if(this.responseText === "1" + "")
                 {
-                    toLogOut(globLang.errNotSubmitted);
+                    //toLogOut(globLang.errNotSubmitted);
+                    logInAgain();
                 }
                 else
                 {
@@ -5046,6 +5089,12 @@ function submitSoluProvide(tippek, typ)
 
 
 }
+
+function logInAgain() {
+    document.getElementById("fullCover").style.display = "table";
+
+}
+
 var helpsor = [];
 var posi = 0;
 function backHelp()

@@ -225,7 +225,29 @@ if(!isset($_SESSION["jelszo"]))
 </head>
 
 <body  >
+<div id="fullCover" style="display: none; position: absolute;width: 100%;height: 100%;top:0;left:0;background-color: rgba(0,0,0,0.35);z-index: 1000" >
 
+    <div style="display: table-cell;vertical-align: middle" >
+        <div style="margin-left: auto;margin-right: auto;width:400px;background-color: #ffffff;text-align: center" >
+            <div style="text-align: right" ><div class="closeButton" onclick="closePopUp();" >X</div></div>
+            <div style="text-align: left;padding-left: 36px;padding-right: 36px;padding-bottom: 36px;padding-top: 12px" >
+                <div>Session is over. Please sign in again.</div>
+                <div>Név:</div>
+                <input type="text" id="popUpName" >
+                <div>Jelszó:</div>
+                <input type="text" id="popUpPass" >
+                <div style="text-align: center;margin-top: 8px">
+                <div class="singInButton" style="background-color: #1a2d5c;color: #ffffff" onclick="sendInfo(99)" >BELÉPÉS</div>
+                </div>
+                <div style="text-align: center;margin-top: 4px" >
+                    <span id="popUpMessage">-</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
 
 <div id="wrapper1" style="display: none;width: 100%;overflow: scroll" onclick="clrPopups();">
 

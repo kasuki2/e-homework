@@ -97,6 +97,19 @@ require_once "checklogin.php";
         }
 
         var globalObj;
+        var tomax = 16;
+
+        function showAll() {
+            if(tomax === 16)
+            {
+                tomax = 0;
+            }
+            else
+            {
+                tomax = 16;
+            }
+        }
+
         function fillResult(res)
         {
 
@@ -114,7 +127,7 @@ require_once "checklogin.php";
 
           var bele = "";
             bele += "<tr style='background-color: #9a2392;color:#ffd5f4' ><td></td><td>" + "ASSIGNED" + "</td><td></td><td>" + "</td><td>" +  "</td><td></td></tr>";
-            bele += "<tr style='background-color: #9a2392;color:#ffd5f4' ><td></td><td><button onclick='delElem();' >delete</button></td><td></td><td>" + "</td><td>" +  "</td><td></td></tr>";
+            bele += "<tr style='background-color: #9a2392;color:#ffd5f4' ><td></td><td><button onclick='delElem();' >delete</button></td><td><button onclick='showAll();' >show all</button></td><td>" + "</td><td>" +  "</td><td></td></tr>";
 
           if(assigned != null)
           {
@@ -163,15 +176,20 @@ require_once "checklogin.php";
             {
                 if(corrected.length > 0)
                 {
-                    if(corrected.length > 12)
+                    if(corrected.length > tomax && tomax !== 0)
                     {
-                        var tomax = 12;
+                        var localMax = tomax
+                    }
+                    else if(tomax === 0)
+                    {
+                        localMax = corrected.length;
                     }
                     else
                     {
-                        tomax = corrected.length;
+                        localMax = corrected.length;
                     }
-                    for(var i = 0;i<tomax;i++)
+
+                    for(var i = 0;i<localMax;i++)
                     {
                         bele += "<tr><td><td>" + parseInt(i+1) +  ".</td><td>" + corrected[i].atitle + "</td><td>" + corrected[i].viewed + "</td><td>" + corrected[i].tipus + "</td><td>redo: " + corrected[i].redo + "</td></tr>";
                     }
