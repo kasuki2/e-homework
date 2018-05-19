@@ -43,6 +43,7 @@ function manageLang()
             hunga.kistext3 = "Még nincs kijavított házid. Ha adtál be házit, akkor azt hamarosan kijavítja a tanár. Csak türelem.";
             hunga.assdate = "KIADVA";
             hunga.submDate = "BEADVA";
+            hunga.noSub = "NINCS BEADVA";
             hunga.corrDate = "KIJAVÍTVA";
             hunga.chosWord = "Kiválasztott szó: ";
             hunga.notSelyet = "Még nem választott szót. Klikkeljen egy szóra, és csak utána a mondatokra.";
@@ -113,6 +114,7 @@ function manageLang()
             hunga.redohw = "újra megoldom";
 
             hunga.directUser = "Klikkeljen a beírt megoldásra. A kinyíló ablakban a tanár megjegyzése is olvasható.";
+            hunga.sessover = "Nyugi, csak lejárt a munkamenet. Lépj be újra.";
 
             globLang = hunga;
           //  return hunga[att];
@@ -140,6 +142,7 @@ function manageLang()
             angol.kistext3 = "You have no corrected homework. If you have submitted any homework, the teacher will correct it soon. Be patient.";
             angol.assdate = "ASSIGNED";
             angol.submDate = "SUBMITTED";
+            angol.noSub = "NOT SUBMITTED";
             angol.corrDate = "CORRECTED";
             angol.chosWord = "Chosen word: ";
             angol.notSelyet = "You have not selected a word. First, click on a word and after that on a sentence.";
@@ -210,6 +213,8 @@ function manageLang()
             angol.redohw = "redo this";
 
             angol.directUser = "Click on the solution you wrote in. The pop-up contains your teacher's remark, too.";
+
+            angol.sessover = "Don't worry. It's just session is up. Log in again.";
 
             globLang = angol;
           //  return angol[att];
@@ -650,11 +655,16 @@ function sendInfo(cod, notif)
                     if(submitCover !== null)
                     {
                         submitCover.style.height = "0";
+                        submitCover.style.backgroundColor = "#78c17e7a";
                         var submitBele = document.getElementById("subCovInner");
                         if(submitBele !== null)
                         {
                             submitBele.style.height = "0";
                         }
+                        document.getElementById("beadText").innerHTML = globLang.submDate; // beadva
+                        document.getElementById("nextGo").innerHTML = globLang.nextTasked; // next
+
+                        document.getElementById("beadGomb").innerHTML = globLang.beadom; // submit butt text
                     }
 
                 }
@@ -959,7 +969,7 @@ var procGram6 = function(inpu)
     }
 
 
-    document.getElementById("workTop1").innerHTML = "<div id='coverMCgram' class='coverMCgram' style='background-color: #ffffff' >" + giveNewHwDas() + "<div style='position: relative' ><div id='submitCover' class='subCov'><div class='subCovBele' id='subCovInner' >" + globLang.submDate + "<span class='nextTask' onclick='ujHwNext(1)' >" + globLang.nextTasked + "</span></div></div><div style='margin-left: 36px;margin-right: 36px' >" + cimGauge(acim, inst, lev) + helperDiv(globObj) + "</div>" + exaDiv + "<table class='mondatTable' style='text-align: left;margin-top: 14px;padding-left: 36px;padding-right: 36px' id='montab' >" + foTab + "</table></div>" + submDiv + "</div>";
+    document.getElementById("workTop1").innerHTML = "<div id='coverMCgram' class='coverMCgram' style='background-color: #ffffff' >" + giveNewHwDas() + "<div style='position: relative' ><div id='submitCover' class='subCov'><div class='subCovBele' id='subCovInner' ><span id='beadText'>" + globLang.submDate + "</span><span id='nextGo' class='nextTask' onclick='ujHwNext(1)' >" + globLang.nextTasked + "</span></div></div><div style='margin-left: 36px;margin-right: 36px' >" + cimGauge(acim, inst, lev) + helperDiv(globObj) + "</div>" + exaDiv + "<table class='mondatTable' style='text-align: left;margin-top: 14px;padding-left: 36px;padding-right: 36px' id='montab' >" + foTab + "</table></div>" + submDiv + "</div>";
 
     animNewHw();
 
@@ -1119,7 +1129,7 @@ var procGram5uj = function(inpu)
     var foTab = "<table class='mondatTable' id='montab' style='text-align: left;margin-top: 14px' >" + tabSor + "</table>";
 
     var submDiv = submitButton("submitGram5(5)");
-    document.getElementById("workTop1").innerHTML = "<div id='coverMCgram' class='coverMCgram' style='background-color: #ffffff;' >" + giveNewHwDas() + "<div class='ujCover' style='position: relative'  ><div id='submitCover' class='subCov'><div class='subCovBele' id='subCovInner' >" + globLang.submDate + "<span class='nextTask' onclick='ujHwNext(1)' >" + globLang.nextTasked + "</span></div></div><div style='padding-left: 36px;padding-right: 36px'  >" + cimGauge(glogTaskCim, inst, lev) + helpDiv + worddi + foTab + "</div></div>" + submDiv + "</div>";
+    document.getElementById("workTop1").innerHTML = "<div id='coverMCgram' class='coverMCgram' style='background-color: #ffffff;' >" + giveNewHwDas() + "<div class='ujCover' style='position: relative'  ><div id='submitCover' class='subCov'><div class='subCovBele' id='subCovInner'><span id='beadText'>" + globLang.submDate + "</span><span id='nextGo' class='nextTask' onclick='ujHwNext(1)' >" + globLang.nextTasked + "</span></div></div><div style='padding-left: 36px;padding-right: 36px'  >" + cimGauge(glogTaskCim, inst, lev) + helpDiv + worddi + foTab + "</div></div>" + submDiv + "</div>";
 
 
     animNewHw();
@@ -2148,7 +2158,7 @@ var procMcGram = function(inp)
     var submitDiv = submitButton("check()");
 
 
-    document.getElementById("workTop1").innerHTML = "<div id='coverMCgram' class='coverMCgram' style='background-color: #ffffff' >" + giveNewHwDas() + "<div style='position: relative' ><div id='submitCover' class='subCov' ><div class='subCovBele' id='subCovInner' >" + globLang.submDate + "<span class='nextTask' onclick='ujHwNext(1)' >" + globLang.nextTasked + "</span></div></div><table class='mondatTable' style='text-align: left;margin-top: 14px;padding-left: 36px;padding-right: 36px' id='montab' >" + cimGauge(glogTaskCim, instuc, lev) +  helper + bele +"</table></div>" + submitDiv + "</div>";
+    document.getElementById("workTop1").innerHTML = "<div id='coverMCgram' class='coverMCgram' style='background-color: #ffffff' >" + giveNewHwDas() + "<div style='position: relative' ><div id='submitCover' class='subCov' ><div class='subCovBele' id='subCovInner' ><span id='beadText'>" + globLang.submDate + "</span><span id='nextGo' class='nextTask' onclick='ujHwNext(1)' >" + globLang.nextTasked + "</span></div></div><table class='mondatTable' style='text-align: left;margin-top: 14px;padding-left: 36px;padding-right: 36px' id='montab' >" + cimGauge(glogTaskCim, instuc, lev) +  helper + bele +"</table></div>" + submitDiv + "</div>";
 
    animNewHw();
 
@@ -4522,7 +4532,7 @@ var procABCgrammar = function (inpu)
     var foTab = "<table class='mondatTable' style='text-align: left;margin-top: 14px' id='montab' >" + mondatSor + "</table>";
 
     var submDiv = submitButton("submitABC()");
-    document.getElementById("workTop1").innerHTML = "<div id='coverMCgram' class='coverMCgram' style='background-color: #ffffff' >" + giveNewHwDas() + "<div style='position: relative' ><div id='submitCover' class='subCov'><div class='subCovBele' id='subCovInner' >" + globLang.submDate + "<span class='nextTask' onclick='ujHwNext(1)' >" + globLang.nextTasked + "</span></div></div><div style='padding-left: 36px;padding-right: 36px' >" + cimGauge(title, instuc, lev) + helperDiv(globTaskObj) + foTab + "</div></div>" + submDiv + "</div>";
+    document.getElementById("workTop1").innerHTML = "<div id='coverMCgram' class='coverMCgram' style='background-color: #ffffff' >" + giveNewHwDas() + "<div style='position: relative' ><div id='submitCover' class='subCov'><div class='subCovBele' id='subCovInner' ><span id='beadText'>" + globLang.submDate + "</span><span id='nextGo' class='nextTask' onclick='ujHwNext(1)' >" + globLang.nextTasked + "</span></div></div><div style='padding-left: 36px;padding-right: 36px' >" + cimGauge(title, instuc, lev) + helperDiv(globTaskObj) + foTab + "</div></div>" + submDiv + "</div>";
 
     animNewHw();
 
@@ -4532,7 +4542,7 @@ function submitButton(submitFunc)
 {
     var dik1 = "<div  style='text-align: center;background-color: #ffffff;padding-top: 24px;padding-bottom: 36px'   >";
 
-    dik1 += "<div  class='beadomButt' style='text-align: center;display: inline-block' onclick='" + submitFunc + ";' ><div id='beadGomb'   >" + globLang.beadom + "</div>";
+    dik1 += "<div id='beadGombCover'  class='beadomButt' style='text-align: center;display: inline-block' onclick='" + submitFunc + ";' ><div id='beadGomb'   >" + globLang.beadom + "</div>";
 
     dik1 += "</div></div>";
 
@@ -4577,11 +4587,31 @@ function animOver()
    // var elemINfo = elem.getBoundingClientRect();
    // alert(elemINfo.width);
     var agomb =  document.getElementById("beadGomb");
-    agomb.innerHTML = globLang.submDate;
-    agomb.parentElement.style.backgroundColor = "#ff0000";
+  //  agomb.innerHTML = globLang.submDate;
+   // agomb.parentElement.style.backgroundColor = "#ff0000";
 
     agomb.style.WebkitAnimation = "letol 0.3s 1";
     agomb.style.animation = "letol 0.3s 1";
+
+   // document.getElementById("beadGombCover").style.backgroundColor = "#175F55"; // dark green
+   // document.getElementById("beadGomb").innerHTML = globLang.beadom;
+
+    // successful submit???
+    var fullCov = document.getElementById("fullCover");
+    if(fullCov.style.display === 'table')
+    {
+        // not successful
+        agomb.innerHTML = globLang.noSub;
+       // agomb.parentElement.style.backgroundColor = "#175F55";
+        document.getElementById("beadGombCover").style.backgroundColor = "#175F55";
+
+    }
+    else
+    {
+        // SUCCESSFUL SUBMIT
+        agomb.innerHTML = globLang.submDate;
+        agomb.parentElement.style.backgroundColor = "#ff0000";
+    }
 
 
     var newone = agomb.cloneNode(true);
@@ -4741,7 +4771,7 @@ var procVocab = function (inpu)
     }
 
 
-    document.getElementById("workTop1").innerHTML = "<div id='coverMCgram' class='coverMCgram' style='background-color: #ffffff' >" + giveNewHwDas() + "<div style='position: relative' ><div id='submitCover' class='subCov'><div class='subCovBele' id='subCovInner' >" + globLang.submDate + "<span class='nextTask' onclick='ujHwNext(1)' >" + globLang.nextTasked + "</span></div></div><div style='padding-left: 36px;padding-right: 36px'>" + cimGauge(cime, inst, lev) + wordDiv + aTable + "</div>" + submDiv + "</div></div>";
+    document.getElementById("workTop1").innerHTML = "<div id='coverMCgram' class='coverMCgram' style='background-color: #ffffff' >" + giveNewHwDas() + "<div style='position: relative' ><div id='submitCover' class='subCov'><div class='subCovBele' id='subCovInner' ><span id='beadText'>" + globLang.submDate + "</span><span id='nextGo' class='nextTask' onclick='ujHwNext(1)' >" + globLang.nextTasked + "</span></div></div><div style='padding-left: 36px;padding-right: 36px'>" + cimGauge(cime, inst, lev) + wordDiv + aTable + "</div>" + submDiv + "</div></div>";
 
 
     animNewHw();
@@ -4936,7 +4966,7 @@ var procVonal = function (inp)
    // var dashbo = "<table class='dashBoartTable'><tr> <td><span id='pages'>" + pages[0] + "/" + pages[1] + "</span></td> <td style='text-align: right' ><span id='backButt' class='dashBoardButt1' onclick='ujHwNext(-1, true)' >" + globLang.back + "</span><span id='nextButt' onclick='ujHwNext(1, true)' class='dashBoardButt2' >" + globLang.next + "</span></td> </tr></table>";
 
 
-    document.getElementById("workTop1").innerHTML = "<div id='coverMCgram' class='coverMCgram' style='background-color: #ffffff' >" + giveNewHwDas() + "<div style='position: relative' ><div id='submitCover' class='subCov'><div class='subCovBele' id='subCovInner' >" + globLang.submDate + "<span class='nextTask' onclick='ujHwNext(1)' >" + globLang.nextTasked + "</span></div></div><div style='position: relative' >" + fullTable + "</div></div>" + subSor + "</div>";
+    document.getElementById("workTop1").innerHTML = "<div id='coverMCgram' class='coverMCgram' style='background-color: #ffffff' >" + giveNewHwDas() + "<div style='position: relative' ><div id='submitCover' class='subCov'><div class='subCovBele' id='subCovInner' ><span id='beadText'>" + globLang.submDate + "</span><span id='nextGo' class='nextTask' onclick='ujHwNext(1)' >" + globLang.nextTasked + "</span></div></div><div style='position: relative' >" + fullTable + "</div></div>" + subSor + "</div>";
 
     animNewHw();
 };
@@ -5091,7 +5121,15 @@ function submitSoluProvide(tippek, typ)
 }
 
 function logInAgain() {
+
+    popUpFill();
+    document.getElementById("sessOver").innerHTML = globLang.sessover;
     document.getElementById("fullCover").style.display = "table";
+    document.getElementById("submitCover").style.backgroundColor = "#ff000033";
+    document.getElementById("beadText").innerHTML = globLang.noSub; // not submitted
+    document.getElementById("nextGo").innerHTML = "";
+
+
 
 }
 
