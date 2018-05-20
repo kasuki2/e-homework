@@ -1412,7 +1412,7 @@ function fillSubmitted(taFile, usertipps)
     tFile = JSON.parse(taFile);
     var uTipps = usertipps.split("_");
     var ABCtips = usertipps.split("_");
-    var tipus = tFile.type;
+    var tipus = parseInt(tFile.type);
     var cime = tFile.title;
     var inst = textDeco(tFile.instructions);
 
@@ -1422,10 +1422,19 @@ function fillSubmitted(taFile, usertipps)
     var instruDiv = "<div style='font-style: italic' >" + inst + "</div>";
     var fejDiv = "<div class='headFrame'>" + cimDiv + instruDiv + "</div>";
 
-    if(tipus == 0 || tipus == 1 || tipus == 2) // type 1 = vonalas, type 2 = ABC
+    if(tipus === 0 || tipus === 1 || tipus === 2) // type 1 = vonalas, type 2 = ABC
     {
         var tabsor = "";
         var tip = 0;
+        if(inst.includes("nothing"))
+        {
+            var emptyOK = true;
+        }
+        else
+        {
+            emptyOK = false;
+        }
+       // alert(emptyOK);
        for(var i = 0;i<tFile.contents.length;i++)
        {
            var sent = tFile.contents[i].sentence;
@@ -1435,20 +1444,20 @@ function fillSubmitted(taFile, usertipps)
 
            for(var s = 0;s<sent.length;s++)
            {
-               if(s == sent.length -1)
+               if(s === sent.length -1)
                {
                    vonal = "";
                }
                else
                {
-                   if(uTipps[tip] != "GGG")
+                   if(uTipps[tip] !== "GGG")
                    {
-                       if(tipus == 0)
+                       if(tipus === 0)
                        {
                            var tipWord = tFile.contents[i].distractors[s];
                            vonal = "<span class='answerWord' style='font-weight: bold;color: #00AFFF'>" + tipWord[uTipps[tip]] + "</span>";
                        }
-                       if(tipus == 1)
+                       if(tipus === 1)
                        {
                            vonal = "<span class='answerWord' style='font-weight: bold;padding-left: 6px;padding-right: 6px;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #111111;color:#00afff;font-size:22px;font-family: " + '"' + 'Nanum Pen Script' + '"' + " '>" + uTipps[tip] + "</span>";
                        }
@@ -1457,7 +1466,12 @@ function fillSubmitted(taFile, usertipps)
                    }
                    else
                    {
-                       vonal = "<span class='answerWord' style='font-style: italic;color: #d20000' >" + globLang.noanswer + "</span>";
+                       var noanswer = globLang.noanswer;
+                       if(emptyOK)
+                       {
+                           noanswer = "---";
+                       }
+                       vonal = "<span class='answerWord' style='font-style: italic;color: #d20000' >" + noanswer + "</span>";
                    }
 
                    tip++;
@@ -1468,7 +1482,7 @@ function fillSubmitted(taFile, usertipps)
            tabsor += "<tr><td style='vertical-align: top' >" + parseInt(i+1) + ".</td><td>" + senten + "</td></tr>";
 
            var tabABCdist = "";
-           if(tipus == 2) // if ABC multichoice + row for distractors
+           if(tipus === 2) // if ABC multichoice + row for distractors
            {
                var wordRow = tFile.contents[i].distractors;
                var worABC = "";
@@ -4265,6 +4279,9 @@ var procVonalasCorrected = function (muster, userTippek, teacherRemakrs)
 
     var oss = 0;
 
+    var emptyOK = false;
+    instrukc.includes("nothing") ?  emptyOK = true : emptyOK = false;
+
 
   var stil = "style='border-style:none;border-bottom-style:solid;border-width:1px;padding-left:4px;padding-right:4px;text-align:center;font-weight:bold;color:#00aa00'";
   var z = 0;
@@ -4276,21 +4293,35 @@ var procVonalasCorrected = function (muster, userTippek, teacherRemakrs)
       sentences = "";
       for(var s = 0;s<Contents[i].sentence.length;s++)
       {
+          var cori = true;
           var corCol = "style='color:#00bb00;font-weight:bold;font-size:20px;font-family: " + '"' + 'Nanum Pen Script' + "'" + '"';
           if(tanarJav[z] !== "OK")
           {
+              cori = false;
               corCol = "style='color:#ff0000;font-weight:bold;font-size:20px;font-family: " + '"' + 'Nanum Pen Script' + "'" + '"';
           }
 
           var beir = "";
           if(userTipArr[z] === "GGG")
           {
-              beir = "<i>" + globLang.noanswer + "</i>";
-              if(s < Contents[i].sentence.length-1)
+
+              if(emptyOK && cori)
               {
-                  notFilled++;
+                      beir = "---";
+                      corCol = "style='color:#00bb00'";
               }
-              corCol = "style='color:#ff0000'";
+              else
+              {
+                  beir = "<i>" + globLang.noanswer + "</i>";
+
+                  if(s < Contents[i].sentence.length-1)
+                  {
+                      notFilled++;
+                  }
+                  corCol = "style='color:#ff0000'";
+              }
+
+
           }
           else {
               beir = userTipArr[z];
