@@ -465,7 +465,7 @@ else
 
 
               mus = mus + "<tr " + szin + " ><td>" + correctSolus[c] + "</td><td>" + userTippek[c] + "</td><td class='azOK' onclick='changeOk(this)' >" + ok + "</td><td><input class='Trem' type='text' value='-'></tr></tr>";
-              coArr.push("<span>(" + correctSolus[c] + ") </span><span " + szin +" >" + userTippek[c] + "</span><span class='azOK' onclick='changeOk2(this)' >" + ok + "</span><span><input class='Trem' type='text' value='-'></span>");
+              coArr.push("<span>(" + correctSolus[c] + ") </span><span " + szin +" >" + userTippek[c] + "</span><span class='azOK' onclick='changeOk2(this)' >" + ok + "</span><span><input class='Trem' style='width: 220px' type='text' value='-'></span>");
             }
 
 
@@ -496,14 +496,22 @@ else
 
                }
 
-               asor += "<tr><td>" + belem + "</td></tr>";
-               asor += "<tr><td>" + cori + "</td></tr>";
+               if(parseInt(s+1)%2 === 0)
+               {
+                   var bgcol = "style='background-color:#ffffff'";
+               }
+               else
+               {
+                   bgcol = "style='background-color:#efffef'";
+               }
+               asor += "<tr " + bgcol + " ><td>" + parseInt(s+1) + ".</td><td>" + belem + "</td></tr>";
+               asor += "<tr " + bgcol + " ><td></td><td>" + cori + "</td></tr>";
 
             }
 
 
             //  alert("<table>" + mind + "</table>");
-            var gombSor = "<span style='padding: 4px;cursor: pointer;background-color: #1a6cfb;color:white' onclick='sendCorr();' >SEND CORRECTED</span>";
+            var gombSor = "<div style='width:220px;text-align: center; padding: 4px;margin-top:12px;cursor: pointer;background-color: #1a6cfb;color:white' onclick='sendCorr();' >SEND CORRECTED</div>";
             var headSor = "<tr><td>CORRECT SOL.</td><td colspan=2 >USER TIPS</td><td>Teacher Remarks</td></tr>";
           // document.getElementById('vonalasResult').innerHTML = "<table>" + headSor + mus + gombSor + "</table>" + "<br>" + "<table>" + asor + "</table>" + gombSor;
             document.getElementById('vonalasResult').innerHTML = "<table>" + asor + "</table>" + gombSor;

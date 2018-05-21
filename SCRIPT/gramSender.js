@@ -4360,7 +4360,7 @@ var procVonalasCorrected = function (muster, userTippek, teacherRemakrs)
 
 
    // var messSor = "<tr><td colspan='2' class='techerMessage'>" + getMessage() + "</td></tr>";
-  var fullTable = "<table class='taskTable' cellpadding='0' cellspacing='0' >" + fullSor + "</table>";
+  var fullTable = "<table class='taskTable' cellpadding='0' cellspacing='0' style='margin-bottom: 16px' >" + fullSor + "</table>";
 
 
     // var apages = getOldPage();
