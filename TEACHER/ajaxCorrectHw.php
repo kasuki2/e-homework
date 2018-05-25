@@ -367,8 +367,8 @@ function sendMail($userFold)
 function goMail($to)
 {
 
-    $subject = "new homework";
-    $message = "Te teacher has corrected your homework! Feel like checking it out now? Then go to your ehw account: https://ehw.cloud";
+    $subject = "Corrected homework";
+    $message = "Te teacher has corrected your homework! Feel like checking it out now? Then go to https://ehw.cloud";
     $headers = "from: postmaster@ehw.cloud \n";
     $headers .= "X-mailer: phpWebmail \n";
     $ifsent = mail($to, $subject, $message, $headers);

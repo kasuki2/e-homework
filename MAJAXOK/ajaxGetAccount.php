@@ -113,6 +113,10 @@ function deleteUserDir($dir)
         }
     }
     rmdir($dir);
+
+    $_SESSION["tempide"] = "0";
+    $_SESSION["felhasz"] = "0";
+    $_SESSION["jelszo"] = "0";
 }
 
 

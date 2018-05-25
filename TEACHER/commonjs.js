@@ -43,7 +43,7 @@ var globalContents = "";
 function showInfo(inpu)
 {
 
-    if(inpu.charAt(0) != "{") // HELPER FILE
+    if(inpu.charAt(0) !== "{") // HELPER FILE
     {
         return;
     }
@@ -53,17 +53,17 @@ function showInfo(inpu)
 
 
     var tit = document.getElementById("taskTitle");
-    if(tit.tagName == "textarea")
+    if(tit.tagName === "textarea")
     {
         alert("it's textaerea");
         document.getElementById("taskTitle").value = taskFile.title;
-        document.getElementById("instru").value = taskFile.instructions;
     }
     else
     {
         document.getElementById("taskTitle").innerHTML = taskFile.title;
-        document.getElementById("instru").innerHTML = taskFile.instructions;
     }
+
+    document.getElementById("instru").value = taskFile.instructions;
 
     var tipusa = taskFile.type;
     var contents = "";

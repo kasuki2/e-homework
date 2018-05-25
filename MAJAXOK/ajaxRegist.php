@@ -503,7 +503,13 @@ if($code == 0) // registration
 
             $toSave = json_encode($usersArr);
             file_put_contents($aFileNev, $toSave);
+
+            // send mail about registration
+            regiMail($usNev);
+
             echo "Sikeres regisztráció." . count($fileArray);
+
+
         }
         elseif($aFold == 1)
         {
@@ -546,6 +552,9 @@ if($code == 0) // registration
             $toSave = json_encode($fileArray);
             file_put_contents($aFileNev, $toSave);
             echo "Sikeres regisztráció." . count($fileArray);
+
+            // send mail about registration
+            regiMail($usNev);
         }
         elseif($aFold == 1)
         {
@@ -765,4 +774,21 @@ function createUserFolder($foldName)
     }
 }
 
-?>
+
+
+function regiMail($userNe)
+{
+
+    $subject = "New ehw student.";
+    $message = $userNe . " has registered on ehw.";
+    $headers = "from: postmaster@ehw.cloud \n";
+    $headers .= "X-mailer: phpWebmail \n";
+    mail("immer2001@gmail.com", $subject, $message, $headers);
+
+}
+
+
+
+
+
+    ?>

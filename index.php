@@ -338,7 +338,7 @@ if(!isset($_SESSION["jelszo"]))
 
 
 
-</div>
+</div><!-- wrapper1 vege -->
 
 
 <input type="hidden" id="tempida" value="<?php echo $_SESSION["tempide"]; ?>">
@@ -346,7 +346,7 @@ if(!isset($_SESSION["jelszo"]))
 <input type="hidden" id="inPass" value="<?php echo $_SESSION["jelszo"]; ?>">
 
 
-</div><!-- wrapper1 vege -->
+
 
 
 
@@ -432,7 +432,11 @@ if(!isset($_SESSION["jelszo"]))
                             </td>
                         </tr>
                     </table>
-
+                    <table style="display: block;max-width: 450px;background-color: #ffffff;padding-left:4px;padding-right: 4px;padding-top: 8px;padding-bottom: 12px" >
+                        <tr>
+                            <td style="cursor: pointer" >Kapcsolat</td>
+                        </tr>
+                    </table>
 
                 </td>
             </tr>
@@ -524,6 +528,31 @@ if(!isset($_SESSION["jelszo"]))
 
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <table id="elfTab" style="display: table;padding: 12px;background-color: #dde9ff;width: 100%">
+                        <tr>
+                            <td colspan="2">Küldjön e-mailt</td>
+                        </tr>
+                        <tr>
+                            <td>Az Ön e-mail címe:</td>
+                            <td><input type="text" id="userEmail" style="width: 200px" > </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" ><div style="text-align: center" >
+                                <textarea id="messContent" style="width: 80%" ></textarea>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" ><span id="uzi"></span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" ><div style="text-align: center;margin-top: 16px" > <span class="sendButt" onclick="sendInfo(3);" >SEND</span> </div></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
 
         </table>
     </div>
@@ -532,7 +561,7 @@ if(!isset($_SESSION["jelszo"]))
     </div><!-- centering end -->
 </div>
 
-<script src="SCRIPT/gramSender.js?updated=20180511"></script>
+<script src="SCRIPT/gramSender.js?updated=20180525"></script>
 <script src="SCRIPT/gems.js?updated=1492974572411"></script>
 </body>
 </html>
