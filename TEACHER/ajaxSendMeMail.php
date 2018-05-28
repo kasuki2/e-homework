@@ -28,7 +28,7 @@ if(checkMail($mailAdd) !== "0")
     }
     else
     {
-        echo "Nem írt üzenetet.";
+        echo "Nem írt üzenetet. ";
     }
 }
 else
