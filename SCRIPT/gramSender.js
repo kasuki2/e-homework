@@ -5432,3 +5432,46 @@ function putinLoader()
 // document.getElementById("workTop1").innerHTML = bele;
   document.getElementById("loaderDiv").style.visibility = "visible";
 }
+
+function sendMeMail() {
+    var userMailAdd = document.getElementById("userEmail").value.trim();
+    var msContent = document.getElementById("messContent").value.trim();
+    if(userMailAdd === "")
+    {
+        alert("Nem töltötte ki az e-mail címét.");
+        return;
+    }
+    if(msContent === "")
+    {
+        alert("Nem írt üzenetet.");
+        return;
+    }
+
+
+
+    var filename = "TEACHER/ajaxSendMeMail.php";
+    var kuldi = "mailadd=" + userMailAdd + "&msCont=" + msContent;
+
+    updateHW(filename, kuldi).then(function (res) {
+
+        document.getElementById("uziMail").innerHTML = res;
+    });
+
+
+}
+
+function openContact() {
+
+    var contTab = document.getElementById("mailTab");
+    if(contTab.style.display === "table")
+    {
+        contTab.style.display = "none";
+    }
+    else
+    {
+        contTab.style.display = "table";
+    }
+
+
+
+}

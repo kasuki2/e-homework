@@ -212,7 +212,7 @@ if(!isset($_SESSION["jelszo"]))
 
         function stor()
         {
-            alert(getStorage("pw"));
+            openContact();
         }
         /*
         document.onreadystatechange = function() {
@@ -372,7 +372,7 @@ if(!isset($_SESSION["jelszo"]))
             <tr>
                 <td rowspan="5" style="background-color: #1a2d5c;color: white;width: 140px;vertical-align: top" >
 
-                <img onclick="stor();" src="IMAGES/ehw_logo3.png" style="width: 90px;display: block;margin-left: auto;margin-right: auto;margin-top: 20px" >
+                <img  ondblclick="stor();" src="IMAGES/ehw_logo3.png" style="width: 90px;display: block;margin-left: auto;margin-right: auto;margin-top: 20px" >
                 </td>
                 <td style="text-align: center" > <!-- log in -->
 
@@ -432,9 +432,9 @@ if(!isset($_SESSION["jelszo"]))
                             </td>
                         </tr>
                     </table>
-                    <table style="display: block;max-width: 450px;background-color: #ffffff;padding-left:4px;padding-right: 4px;padding-top: 8px;padding-bottom: 12px" >
+                    <table style="display: none;max-width: 450px;background-color: #ffffff;padding-left:4px;padding-right: 4px;padding-top: 8px;padding-bottom: 12px" >
                         <tr>
-                            <td style="cursor: pointer" >Kapcsolat</td>
+                            <td style="cursor: pointer" onclick="openContact();" >Kapcsolat</td>
                         </tr>
                     </table>
 
@@ -530,7 +530,7 @@ if(!isset($_SESSION["jelszo"]))
             </tr>
             <tr>
                 <td>
-                    <table id="elfTab" style="display: table;padding: 12px;background-color: #dde9ff;width: 100%">
+                    <table id="mailTab" style="display: none;padding: 12px;background-color: #dde9ff;width: 100%">
                         <tr>
                             <td colspan="2">Küldjön e-mailt</td>
                         </tr>
@@ -545,10 +545,10 @@ if(!isset($_SESSION["jelszo"]))
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="2" ><span id="uzi"></span></td>
+                            <td colspan="2" ><span id="uziMail"></span></td>
                         </tr>
                         <tr>
-                            <td colspan="2" ><div style="text-align: center;margin-top: 16px" > <span class="sendButt" onclick="sendInfo(3);" >SEND</span> </div></td>
+                            <td colspan="2" ><div style="text-align: center;margin-top: 16px" > <span class="sendButt" onclick="sendMeMail();" >SEND</span> </div></td>
                         </tr>
                     </table>
                 </td>
