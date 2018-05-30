@@ -32,7 +32,7 @@ if(!isset($_SESSION["jelszo"]))
     <link rel="stylesheet" type="text/css" href="helpers.css">
 
     <link href='https://fonts.googleapis.com/css?family=Nanum Pen Script' rel='stylesheet'>
-
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback2&render=explicit" async defer></script>
 
 
     <style>
@@ -54,12 +54,6 @@ if(!isset($_SESSION["jelszo"]))
 
 
     <script>
-
-
-
-
-
-
 
 
         function matchMail(ele)
@@ -536,16 +530,23 @@ if(!isset($_SESSION["jelszo"]))
                         </tr>
                         <tr>
                             <td>Az Ön e-mail címe:</td>
+                        </tr>
+                        <tr>
                             <td><input type="text" id="userEmail" style="width: 200px" > </td>
                         </tr>
                         <tr>
-                            <td colspan="2" ><div style="text-align: center" >
+                            <td colspan="2" ><div >
                                 <textarea id="messContent" style="width: 80%" ></textarea>
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td colspan="2" ><span id="uziMail"></span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id="acap"></div>
+                            </td>
                         </tr>
                         <tr>
                             <td colspan="2" ><div style="text-align: center;margin-top: 16px" > <span class="sendButt" onclick="sendMeMail();" >SEND</span> </div></td>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>robot</title>
+
+
+    <script>
+
+
+
+        var widgetId1;
+
+        var onloadCallback = function() {
+            // Renders the HTML element with id 'example1' as a reCAPTCHA widget.
+            // The id of the reCAPTCHA widget is assigned to 'widgetId1'.
+            widgetId1 = grecaptcha.render('acap', {
+                'sitekey' : '6LfIFFwUAAAAACgkVoqgpi4PglapcTc9uCNsSu7V',
+                'theme' : 'light'
+            });
+        };
+
+        function updateHW(filename, kuld)
+        {
+            return new Promise(function (resolve, reject){
+
+
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        resolve(this.responseText);
+                    }
+                };
+
+                xhttp.onerror = function () {
+                    //  reject(this.status + " " + this.statusText);
+                    reject("");
+                };
+
+                xhttp.open("POST", filename, true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send(kuld);
+            })
+        }
+
+
+        function sendTheMail() {
+
+            //alert(grecaptcha.getResponse(widgetId1));
+            var resul = grecaptcha.getResponse(widgetId1);
+
+            var filename = "TEACHER/ajaxSendMeMail.php";
+            var kuldi = "mailadd=" + "immer2001bt@yahoo.es" + "&msCont=" + "Hello, hekker!" + "&resu=" + resul;
+
+            updateHW(filename, kuldi).then(function (res) {
+
+                document.getElementById("resu").innerHTML = res;
+            });
+
+        }
+
+
+    </script>
+
+
+   <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+    <!--    <script src="https://www.google.com/recaptcha/api.js"></script> -->
+
+        </head>
+<body>
+
+
+
+<!-- <div class="g-recaptcha" data-sitekey="6LfIFFwUAAAAACgkVoqgpi4PglapcTc9uCNsSu7V"></div> -->
+<form action="javascript:sendTheMail();">
+<!-- <form action="javascript:sendTheMail();"> -->
+
+    <div id="acap"></div>
+    <br>
+    <input type="submit" value="Küldés">
+</form>
+
+
+<div id="resu">result</div>
+
+</body>
+</html>

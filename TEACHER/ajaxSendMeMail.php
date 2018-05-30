@@ -1,49 +1,84 @@
 <?php
 
+
+$mailAdd = $msCont = $result = "";
+
 $mailAdd = $_POST['mailadd'];
 $msCont = $_POST['msCont'];
 
+$result = $_POST['resu'];
+$captcha = false;
 
+$url = 'https://www.google.com/recaptcha/api/siteverify';
+$data = array('secret' => "6LfIFFwUAAAAADd96NLjpFaxakVco7q7Vz_2CFXp", 'response' => $result);
 
-if(checkMail($mailAdd) !== "0")
+// use key 'http' even if you send the request to https://...
+$options = array(
+    'http' => array(
+        'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+        'method'  => 'POST',
+        'content' => http_build_query($data)
+    )
+);
+$context  = stream_context_create($options);
+$result = file_get_contents($url, false, $context);
+if ($result === FALSE) { $captcha = false; }
+else
 {
-    if(trim($msCont) !== "")
+    $resp = json_decode($result);
+    if($resp->success)
     {
-        if(!filter_input(INPUT_POST, 'msCont', FILTER_SANITIZE_STRING))
-        {
-            echo "Az üzenet nem feldolgozható. ";
-        }
-        else
-        {
-            if(sendTeacherMail($mailAdd, $msCont))
-            {
-                echo "Üzenetét elküldtük. Hamarosan válaszolunk. <br> Köszönjük érdeklődését.";
-            }
-            else
-            {
-                echo "Az üzenet nem lett elküldve valamilyen probláma miatt. Talán próbálja később.";
-            }
+        $captcha = true;
 
-        }
     }
     else
     {
-        echo "Nem írt üzenetet. ";
+        $captcha = false;
+    }
+}
+
+
+
+
+if($captcha) {
+
+    if (checkMail($mailAdd) !== "0") {
+        if (trim($msCont) !== "") {
+            if (!filter_input(INPUT_POST, 'msCont', FILTER_SANITIZE_STRING)) {
+                echo "Az üzenet nem feldolgozható. ";
+            } else {
+                if (sendTeacherMail($mailAdd, $msCont)) {
+                    echo "Üzenetét elküldtük. Hamarosan válaszolunk. <br> Köszönjük érdeklődését.";
+
+                } else {
+                    echo "Az üzenet nem lett elküldve valamilyen probláma miatt. Talán próbálja később.";
+                }
+
+            }
+        } else {
+            echo "Nem írt üzenetet. ";
+        }
+    } else {
+        echo "Érvénytelen e-mail cím.";
     }
 }
 else
 {
-    echo "Érvénytelen e-mail cím.";
+    echo "Hibás Captcha. <button onclick='resetCap();' >reset</button>";
 }
-
 
 
 function sendTeacherMail($userNeve, $msCont)
 {
-    $subject = "Contact";
-    $headers = "from: postmaster@ehw.cloud \n";
-    $headers .= "X-mailer: phpWebmail \n";
-    $ifsent = mail($userNeve, $subject, $msCont, $headers);
+    $message = $userNeve . "\r\n" . $msCont;
+
+// In case any of our lines are larger than 70 characters, we should use wordwrap()
+    $message = wordwrap($message, 70, "\r\n");
+
+// $headers = "From: kashusof@s5.tarhely.com;Content-Type:text/html;charset=utf-8";
+// Send
+    $ifsent = mail("immer2001@gmail.com", 'Contact', $message);
+
 
     if($ifsent)
     {

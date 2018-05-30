@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>codewar</title>
+
+    <script>
+
+
+        function positiveSum(arr)
+        {
+
+            return arr.filter(function(v){if(v>0){return v;}}).reduce(function (a, c) { return a+c; },0) ;
+
+
+        }
+
+        function doit()
+        {
+            alert(update('red'));
+        }
+
+        function update(current) {
+            var modes = {};
+            modes.green = 'yellow';
+            modes.yellow = 'red';
+            modes.red = 'green';
+            return modes[current];
+        }
+
+    </script>
+
+
+</head>
+<body>
+<button onclick="doit();" >press</button>
+</body>
+</html>

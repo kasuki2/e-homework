@@ -5434,6 +5434,9 @@ function putinLoader()
 }
 
 function sendMeMail() {
+
+    document.getElementById("uziMail").innerHTML = "Küldés...";
+    var resul = grecaptcha.getResponse(widgetId1);
     var userMailAdd = document.getElementById("userEmail").value.trim();
     var msContent = document.getElementById("messContent").value.trim();
     if(userMailAdd === "")
@@ -5450,7 +5453,7 @@ function sendMeMail() {
 
 
     var filename = "TEACHER/ajaxSendMeMail.php";
-    var kuldi = "mailadd=" + userMailAdd + "&msCont=" + msContent;
+    var kuldi = "mailadd=" + userMailAdd + "&msCont=" + msContent + "&resu=" + resul;
 
     updateHW(filename, kuldi).then(function (res) {
 
@@ -5471,7 +5474,19 @@ function openContact() {
     {
         contTab.style.display = "table";
     }
+}
 
+var widgetId1;
 
+var onloadCallback2 = function() {
+    // Renders the HTML element with id 'example1' as a reCAPTCHA widget.
+    // The id of the reCAPTCHA widget is assigned to 'widgetId1'.
+    widgetId1 = grecaptcha.render('acap', {
+        'sitekey' : '6LfIFFwUAAAAACgkVoqgpi4PglapcTc9uCNsSu7V',
+        'theme' : 'light'
+    });
+};
 
+function resetCap() {
+    widgetId1 = grecaptcha.reset();
 }
