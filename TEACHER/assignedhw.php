@@ -6,6 +6,8 @@ require_once "checklogin.php";
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="teacherstyle.css">
+
+    <script src="procType0.js"></script>
     <title>assigned hw</title>
 
     <style>
@@ -60,9 +62,11 @@ require_once "checklogin.php";
 
 
         var elem;
+        var globalUserDir;
         function getFiles(el)
         {
             elem = el;
+            globalUserDir = el.innerHTML;
             updateHW("ajaxAssagnedHw.php" , "user=" + el.innerHTML + "&code=0").then(function (res) {
                 fillResult(res);
             });
@@ -110,11 +114,11 @@ require_once "checklogin.php";
             }
         }
 
+
+        var globalCorrected;
+
         function fillResult(res)
         {
-
-
-
 
           var obj = JSON.parse(res);
             globalObj = obj;
@@ -123,7 +127,7 @@ require_once "checklogin.php";
           var assigned = obj.assigned;
           var submitted = obj.submitted;
           var corrected = obj.corrected;
-
+            globalCorrected = corrected;
 
           var bele = "";
             bele += "<tr style='background-color: #9a2392;color:#ffd5f4' ><td></td><td>" + "ASSIGNED" + "</td><td></td><td>" + "</td><td>" +  "</td><td></td></tr>";
@@ -191,7 +195,7 @@ require_once "checklogin.php";
 
                     for(var i = 0;i<localMax;i++)
                     {
-                        bele += "<tr><td><td>" + parseInt(i+1) +  ".</td><td>" + corrected[i].atitle + "</td><td>" + corrected[i].viewed + "</td><td>" + corrected[i].tipus + "</td><td>redo: " + corrected[i].redo + "</td></tr>";
+                        bele += "<tr onclick='showTask(" + parseInt(i) + ");' ><td><td>" + parseInt(i+1) +  ".</td><td>" + corrected[i].atitle + "</td><td>" + corrected[i].viewed + "</td><td>" + corrected[i].tipus + "</td><td>redo: " + corrected[i].redo + "</td></tr>";
                     }
 
                 }
@@ -218,6 +222,44 @@ require_once "checklogin.php";
 
         }
 
+        function showTask(ss) {
+
+            var cime = globalCorrected[ss].apath;
+            var id = globalCorrected[ss].id;
+
+            // get task file and user hw file from the corrected ones
+            var ajaxFileNav = "ajaxGetCorrHw.php";
+            var path = "user=" + globalUserDir + "&taskid=" + id + "&code=0";
+            updateHW(ajaxFileNav , path).then(function (res) {
+
+               document.getElementById("userResult").innerHTML = res;
+
+               path = "taskPath=" + cime + "&code=1";
+               updateHW(ajaxFileNav, path).then(function (value) {
+                   processTask(value, res);
+               })
+
+            });
+        }
+
+        function processTask(taskFile, res) {
+
+            var studHw = JSON.parse(res);
+            var obj = JSON.parse(taskFile);
+            var Type = obj.type;
+
+            if(Type == 0)
+            {
+                type0(taskFile, studHw.userTipps);
+            }
+            else
+            {
+                alert(Type);
+            }
+
+        }
+
+        var popupVon;
     </script>
 
 </head>
@@ -231,14 +273,15 @@ require_once "checklogin.php";
 
 $amenu = file_get_contents("menusor.html");
 echo $amenu;
+?>
+
+<div style="width: 50%;display: inline-block ">
+
+<?php
 
 $userFolders = "../USERS_HW/";
-
 $mappak = scandir($userFolders);
-
-
 $mapFilt = array_values(array_diff($mappak, array('.', '..')));
-
 
 for($i=0;$i<count($mapFilt);$i++)
 {
@@ -248,11 +291,14 @@ for($i=0;$i<count($mapFilt);$i++)
     echo "</div>"; // nagy keret vege
 }
 
-
-
-
-
 ?>
+</div>
+    <div id="taskDiv" style="width: 45%;display: inline-block;background-color: #b4ccfb;vertical-align: top;white-space: pre-wrap">
+
+        <div id="userResult"></div>
+        <div id="taskResult" style="background-color: white;margin-top: 4px" ></div>
+    </div>
+
 
     <div id="result"></div>
 
