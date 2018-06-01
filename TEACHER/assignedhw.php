@@ -7,6 +7,10 @@ require_once "checklogin.php";
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="teacherstyle.css">
 
+    <link rel="stylesheet" type="text/css" href="../css_sender2.css">
+    <link rel="stylesheet" type="text/css" href="../style1.css">
+    <link rel="stylesheet" type="text/css" href="../helpers.css">
+
     <script src="procType0.js"></script>
     <title>assigned hw</title>
 
@@ -17,7 +21,7 @@ require_once "checklogin.php";
         }
         #wrapper
         {
-            background-color: white;
+            background-color: #ececec;
             margin-left: auto;
             margin-right: auto;
             padding: 36px;
@@ -250,7 +254,11 @@ require_once "checklogin.php";
 
             if(Type == 0)
             {
-                type0(taskFile, studHw.userTipps);
+                type0(taskFile, studHw);
+            }
+            else if(Type == 1)
+            {
+                type1(taskFile, studHw);
             }
             else
             {
@@ -260,10 +268,21 @@ require_once "checklogin.php";
         }
 
         var popupVon;
+
+
+        function bodyClick() {
+
+            var popups = document.getElementsByClassName("vonalasExp");
+            for(var i = 0;i<popups.length;i++)
+            {
+                popups[i].style.visibility = "hidden";
+            }
+        }
+
     </script>
 
 </head>
-<body>
+<body onclick="bodyClick();" >
 
 <div id="wrapper">
 
@@ -275,7 +294,7 @@ $amenu = file_get_contents("menusor.html");
 echo $amenu;
 ?>
 
-<div style="width: 50%;display: inline-block ">
+<div style="width: 50%;display: inline-block;background-color: #ffffff;padding: 4px ">
 
 <?php
 
@@ -293,9 +312,9 @@ for($i=0;$i<count($mapFilt);$i++)
 
 ?>
 </div>
-    <div id="taskDiv" style="width: 45%;display: inline-block;background-color: #b4ccfb;vertical-align: top;white-space: pre-wrap">
+    <div id="taskDiv" style="width: 45%;display: inline-block;background-color: #b4ccfb;vertical-align: top">
 
-        <div id="userResult"></div>
+        <div id="userResult" style="padding: 8px;background-color: #ffffff" ></div>
         <div id="taskResult" style="background-color: white;margin-top: 4px" ></div>
     </div>
 
