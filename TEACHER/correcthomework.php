@@ -827,7 +827,7 @@ else
 
                 // vonal1 = "<span class='beirtWord' id='von_" + i + "' >  __________ </span>";
                 // vonal2 = "<span class='beirtWord' id='von2_" + i + "' >  __________ </span>";
-                egysor = egysor + sentences[i].gel.trim() + " " + sentences[i].go1.trim() + " " + sentences[i].ge2.trim() + " " + sentences[i].go2.trim() + " " + sentences[i].ge3.trim();
+                egysor = egysor + sentences[i].gel.trim() + " <span style='color: #1a6cfb;font-weight: bold'>" + sentences[i].go1.trim() + "</span> " + sentences[i].ge2.trim() + " <span style='color: #1a6cfb;font-weight: bold'>" + sentences[i].go2.trim() + "</span> " + sentences[i].ge3.trim();
                 egyWord.w1 = sentences[i].go1;
                 egyWord.w2 = sentences[i].go2;
                 egyWord.id = i;
@@ -843,11 +843,11 @@ else
                 else
                 {
                     corr = "NO";
-                    sti = "style='background-color:#ff7777'";
+                    sti = "style='background-color:#ffaaaa'";
                 }
 
                 var sorS = i + 1;
-                tabrow = tabrow + "<tr " + sti + "  ><td style='vertical-align: top' >" + sorS + ".</td><td>" + egysor + "</td><td>" + corr + "</td><td><input type='text' class='vocRemark' value='-' ></td></tr>";
+                tabrow = tabrow + "<tr " + sti + "  ><td style='vertical-align: top' >" + sorS + ".</td><td>" + egysor + "</td><td>" + sentences[userTips[i]].go1 + " " + sentences[userTips[i]].go2 + "</td><td>" + corr + "</td><td><input type='text' class='vocRemark' value='-' ></td></tr>";
 
                 var sendDiv = "<div style='text-align: center' ><span style='padding: 4px;cursor: pointer' onclick='corrVoc();' >VOCAB CORRECT</span></div>";
 
