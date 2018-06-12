@@ -3576,33 +3576,6 @@ function showCorrWord(ss, elem, e)
     var azid = "tool2" + ss;
     popupVon = azid;
     document.getElementById(azid).style.visibility = "visible";
-
-    /*
-    if(popupid.trim() != "")
-    {
-        var azelem = document.getElementById(popupid);
-        if(azelem != null)
-        {
-            azelem.style.visibility = "hidden";
-        }
-    }
-
-    var sentences = globObj.contents;
-
-    var correctSol1 = sentences[ss].go1;
-    var correctSol2 = sentences[ss].go2;
-    var mean = sentences[ss].meaning;
-
-    var kids = elem.children;
-
-    popupid = kids[0].id;
-  //  kids[0].innerHTML = correctSol1 + " " + correctSol2 + " = " + mean;
-    kids[0].style.minWidth = "400px";
-
-   // kids[0].style.whiteSpace = "normal";
-    kids[0].style.visibility = "visible";
-    */
-
 }
 
 var procABCcorrecte = function (muster, userTippek, tRemarks)

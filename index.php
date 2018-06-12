@@ -32,7 +32,7 @@ if(!isset($_SESSION["jelszo"]))
     <link rel="stylesheet" type="text/css" href="helpers.css">
 
     <link href='https://fonts.googleapis.com/css?family=Nanum Pen Script' rel='stylesheet'>
-    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback2&render=explicit" async defer></script>
+
 
 
     <style>
@@ -564,5 +564,6 @@ if(!isset($_SESSION["jelszo"]))
 
 <script src="SCRIPT/gramSender.js?updated=20180525"></script>
 <script src="SCRIPT/gems.js?updated=1492974572411"></script>
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback2&render=explicit" async defer></script>
 </body>
 </html>

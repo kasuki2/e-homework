@@ -260,6 +260,14 @@ require_once "checklogin.php";
             {
                 type1(taskFile, studHw);
             }
+            else if(Type == 3)
+            {
+                type3(taskFile, studHw);
+            }
+            else if(Type == 6)
+            {
+                type6(taskFile, studHw);
+            }
             else
             {
                 alert(Type);
@@ -324,5 +332,6 @@ for($i=0;$i<count($mapFilt);$i++)
 
 
 </div><!-- wrapper vege -->
+<link href='https://fonts.googleapis.com/css?family=Nanum Pen Script' rel='stylesheet'>
 </body>
 </html>
