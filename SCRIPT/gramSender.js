@@ -3425,14 +3425,14 @@ var procVocCorrected = function(muster, userTippek, tRemarks)
 
         var notprov = false;
 
-        if (userTips[i] == i) {
+        if (userTips[i] === i) {
 
             sti = "style='background-color:#ffffff'";
             stiin = "style='color:#00bb00;font-weight:bold'";
             corrSolu++;
         }
         else {
-            if(userTips[i] == "GGG")
+            if(userTips[i] === "GGG")
             {
                 notProvided++;
                 notprov = true;
@@ -3442,7 +3442,7 @@ var procVocCorrected = function(muster, userTippek, tRemarks)
             stiin = "style='color:#dd0000;font-weight:bold'";
             incorrect++;
         }
-        if(GLOBTEACHREMARKS[i] != "-")
+        if(GLOBTEACHREMARKS[i] !== "-")
         {
           corr = "<span class='remi' onclick='showRem("+ i +")' >" + globLang.remark + "</span>";
         }
@@ -3450,11 +3450,14 @@ var procVocCorrected = function(muster, userTippek, tRemarks)
           corr = "";
         }
 
-       // fill in with the correct words
-        //var wor1 = " " + sentences[i].go1.trim() + "&nbsp;";
-       // var wor2 = sentences[i].go2.trim();
+        if(GLOBTEACHREMARKS[i] !== "-")
+        {
+            corr = "<span class='arrow' ></span>";
+        }
+        else {
+            corr = "";
+        }
 
-        // fill in with user tipps
         if(!notprov)
         {
             var s = parseInt(userTips[i]);
@@ -3507,8 +3510,9 @@ var procVocCorrected = function(muster, userTippek, tRemarks)
 
 
         var sorS = i + 1;
-        tabrow += "<tr><td colspan='2' ><div class='sorexp' style='height: 0;background-color: tan'><div class='vonalasExp' id='tool2" + i + "' >" + fullCorr + "</div></div></td></tr>";
-        tabrow += "<tr><td style='vertical-align: top' >" + sorS + ".</td><td>" + egysor + "</td><td style='text-align: center' id='wo_"+ i +"'  " + sti + " >" + corr + "</td></tr>";
+        tabrow += "<tr><td colspan='3' ><div class='sorexp' style='height: 0;background-color: tan'><div class='vonalasExp' id='tool2" + i + "' >" + fullCorr + "</div></div></td></tr>";
+        //tabrow += "<tr><td>" + corr + "</td><td style='vertical-align: top' >" + sorS + ".</td><td>" + egysor + "</td><td style='text-align: center' id='wo_"+ i +"'  " + sti + " >" + corr + "</td></tr>";
+        tabrow += "<tr><td>" + corr + "</td><td style='vertical-align: top' >" + sorS + ".</td><td>" + egysor + "</td></tr>";
 
 
 
@@ -3539,7 +3543,7 @@ var procVocCorrected = function(muster, userTippek, tRemarks)
     ame = document.getElementById("theMeaning");
     if(!getViewed()) // ha még nem tekintettük meg, akkor send in: it is viewed by user
     {
-        if(incorrect == 0)
+        if(incorrect === 0)
         {
             if(!isRedone())
             {
@@ -3564,6 +3568,7 @@ function giveTRem()
 {
     return "<div id='theRemark'> </div>";
 }
+
 function showCorrWord(ss, elem, e)
 {
     e.stopPropagation();
@@ -3573,9 +3578,23 @@ function showCorrWord(ss, elem, e)
         document.getElementById(popupVon).style.visibility = "hidden";
     }
 
+
     var azid = "tool2" + ss;
     popupVon = azid;
-    document.getElementById(azid).style.visibility = "visible";
+
+    var apopup = document.getElementById(azid);
+
+    var sentences = globObj.contents;
+
+    var inpopup = sentences[ss].gel + " <span style='color: #00f000;font-weight: bold'>" + sentences[ss].go1 + "</span> " + sentences[ss].ge2 + " <span style='color: #00f000;font-weight: bold'>" + sentences[ss].go2 + "</span> " + sentences[ss].ge3;
+
+    if(GLOBTEACHREMARKS[ss] !== "-")
+    {
+        inpopup += "<br>" + "<span style='color: #ff5b28' >* " + GLOBTEACHREMARKS[ss] + "</span>";
+    }
+
+    apopup.innerHTML = inpopup;
+    apopup.style.visibility = "visible";
 }
 
 var procABCcorrecte = function (muster, userTippek, tRemarks)
