@@ -562,7 +562,7 @@ if(!isset($_SESSION["jelszo"]))
     </div><!-- centering end -->
 </div>
 
-<script src="SCRIPT/gramSender.js?updated=20180525"></script>
+<script src="SCRIPT/gramSender.js?updated=20180619"></script>
 <script src="SCRIPT/gems.js?updated=1492974572411"></script>
 <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback2&render=explicit" async defer></script>
 </body>

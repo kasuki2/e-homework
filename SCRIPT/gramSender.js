@@ -3425,7 +3425,7 @@ var procVocCorrected = function(muster, userTippek, tRemarks)
 
         var notprov = false;
 
-        if (userTips[i] === i) {
+        if (parseInt(userTips[i]) === i) {
 
             sti = "style='background-color:#ffffff'";
             stiin = "style='color:#00bb00;font-weight:bold'";
@@ -3442,6 +3442,7 @@ var procVocCorrected = function(muster, userTippek, tRemarks)
             stiin = "style='color:#dd0000;font-weight:bold'";
             incorrect++;
         }
+        /*
         if(GLOBTEACHREMARKS[i] !== "-")
         {
           corr = "<span class='remi' onclick='showRem("+ i +")' >" + globLang.remark + "</span>";
@@ -3449,7 +3450,7 @@ var procVocCorrected = function(muster, userTippek, tRemarks)
         else {
           corr = "";
         }
-
+        */
         if(GLOBTEACHREMARKS[i] !== "-")
         {
             corr = "<span class='arrow' ></span>";
